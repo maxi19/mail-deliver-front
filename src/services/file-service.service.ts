@@ -4,27 +4,28 @@ import {  FileItem } from '../app/models/FileItem';
 import { map , delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
 
-  private  URL_RESOURCE = "http://localhost:8080/";
+  private  URL_RESOURCE = "http://localhost:8080/msdeliver/archivos/nombres";
 
-  constructor(private http: HttpClient) { 
+  constructor(private http: HttpClient) {
+  }
+  obtenerListaDeFiles():Observable<FileItem[]>{
+    return this.http.get<FileItem[]>(`${this.URL_RESOURCE}`);
   }
 
   files(){
-    return this.http.get(this.URL_RESOURCE+"msdeliver/archivos/nombres")
+    return this.http.get(this.URL_RESOURCE)
     .pipe(
       map(this.crearArreglo)
     );
   }
 
 
-  
+
   private crearArreglo(files : any){
     const filesTOload : FileItem[] = [];
     if (files !== null) {
@@ -59,7 +60,7 @@ export class FileService {
   deleteUser(id: String){
     return this.http.delete<User>(`${this.URL_RESOURCE}/users/${id}.json`);
   }
-  
+
   updateUser( user : User){
     const userTemp ={
       ...user

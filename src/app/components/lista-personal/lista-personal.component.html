@@ -1,0 +1,27 @@
+<app-nav></app-nav>
+<div class="container">
+  <h3 class="text-center">PERSONAL</h3>
+  <button type="button" (click)="irAgregarPersonal()" class="btn btn-primary">Agregar</button>
+  <table class="contenido-tabla">
+    <thead>
+      <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let personal of personales; let i = index">
+            <td>{{personal.nombres}}</td>
+            <td>{{personal.apellidos}}</td>
+            <td>{{personal.email}}</td>
+            <td><button (click)= "modificarPersonal(personal.id)" class="btn btn-success"  >Modificar</button></td>
+            <td><button  (click) ="eliminarPersonal(personal.id)" type="button" class="btn btn-danger">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

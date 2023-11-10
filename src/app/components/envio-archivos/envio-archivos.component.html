@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <nav>
+    <div class="logo"></div>
+    <ul>
+      <li><a href="#oferta-educativa">Envio Archivos</a>
+        <ul class="dropdown">
+            <li><a href="#">Varios</a></li>
+            <li><a href="#">Individual</a></li>
+        </ul>
+      </li>
+
+      <li><a href="#inicio">Inicio</a>
+      </li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+  <div class="container">
+    <table class="contenido-tabla">
+      <thead>
+        <tr>
+            <th scope="col">Nombre y Apellido del Docente</th>
+            <th scope="col">Archivos Encontrados</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let personal of personales; let i">
+          <td>{{personal.nombres}}, {{personal.apellidos}}</td>
+          <td *ngFor="let file of files; let j">
+            <p>
+            {{file.nombre}} <input type="checkbox">
+          </p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+
+</body>
+</html>

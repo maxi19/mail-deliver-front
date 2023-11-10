@@ -9,12 +9,11 @@ import { FileItem } from "../../models/FileItem";
 export class FilesComponent implements OnInit {
 
 
-  files : FileItem[] = [];
+  files : FileItem[];
 
   constructor( private servicio : FileService) { }
 
   ngOnInit(): void {
-      this.loadFiles();
   }
 
 

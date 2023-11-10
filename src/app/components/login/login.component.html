@@ -1,0 +1,72 @@
+<div class="d-flex justify-content-center  align-items-center" style="height: 612px;">
+  <div class="border border-secondary rounded bg-light p-2" style="width: 400px; height: 520px;">
+
+    <div class="text-center mt-4 ">
+      <img class="mb-4" src="fatimaLogo.png" alt="" width="100px">
+      <h5>INICIO DE SESION:</h5>
+    </div>
+
+    <form class="formulario-login  mt-6 " [formGroup]="formulario">
+      <!-- Email input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form2Example1">Usuario:</label>
+        <input type="email" id="form2Example1" class="form-control" formControlName="username" />
+      </div>
+
+      <!-- Password input -->
+      <div class="form-outline mb-4">
+        <label class="form-label" for="form2Example2">contraseña:</label>
+        <input type="password" id="form2Example2" class="form-control" formControlName="password" />
+      </div>
+
+      <!-- 2 column grid layout for inline styling 
+          <div class="row mb-4">
+            <div class="col d-flex ">
+              
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                <label class="form-check-label" for="form2Example31"> Remember me </label>
+              </div>
+            </div>
+        
+            <div class="col">
+              
+              <a href="#!">Forgot password?</a>
+            </div>
+          </div>
+        -->
+
+      <div class="mt-1" *ngIf="mostrarVentanaWarning">
+        <div class="alert alert-danger" role="alert">
+          {{mensajeError}}
+        </div>
+      </div>
+      <!--Submit button -->
+      <button type="button" class="btn btn-primary btn-block mb-4" (click)="login()">Ingresar</button>
+      <!--
+          Register buttons
+          <div class="text-center">
+            <p>Not a member? <a href="#!" [routerLink]="'../registro'"  >Register</a></p>
+            <p>or sign up with:</p>
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-facebook-f"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-google"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-twitter"></i>
+            </button>
+        
+            <button type="button" class="btn btn-link btn-floating mx-1">
+              <i class="fab fa-github"></i>
+            </button>
+          </div>
+          -->
+
+    </form>
+  </div>
+
+</div>

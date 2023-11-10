@@ -1,0 +1,25 @@
+<app-nav></app-nav>
+<div class="container">
+  <h3 class="text-center">RECIBOS ENVIADOS</h3>
+  <button type="button" (click)="(eliminarTodos)" class="btn btn-danger">Eliminar Todos</button>
+  <table class="contenido-tabla">
+    <thead>
+      <tr>
+          <th scope="col">Recibo</th>
+          <th scope="col">fecha</th>
+          <th scope="col">Personal</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let recibo of recibosEnviados; let i = index">
+            <td>{{recibo.nombre}}</td>
+            <td>{{recibo.fecha}}</td>
+            <td>{{recibo.personal.nombres +" " + recibo.personal.apellidos}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

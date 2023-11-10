@@ -1,0 +1,23 @@
+<app-nav></app-nav>
+<div class="col-md-6 offset-md-3">
+    <h4 class="text-center">AGREGAR PERSONAL</h4>
+    <form (ngSubmit)= "onSubmit()">
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="form-label">Nombre Completo</label>
+            <input type="text" class="form-control" id="nombre" [(ngModel)]= "personal.nombres" name="nombre">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="form-label">Apellido Completo</label>
+            <input type="text" class="form-control" id="apellido" [(ngModel)]= "personal.apellidos" name="apellido">
+        </div>
+        <div class="form-group">
+
+            <label for="exampleFormControlInput1" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com" [(ngModel)]= "personal.email" name="email">
+
+        </div>
+        <br>
+        <button class="btn btn-success">Agregar</button>
+
+    </form>
+</div>

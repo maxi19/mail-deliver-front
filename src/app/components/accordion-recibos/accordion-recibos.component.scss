@@ -1,0 +1,15 @@
+$ep-sample-border: 1px solid rgba(174, 174, 174, 0.25);
+
+.sample-wrapper {
+    overflow-y: auto;
+    max-height: 380px;
+    margin: 8px;
+}
+
+igx-switch {
+    padding: 16px;
+}
+
+igx-expansion-panel {
+    border: $ep-sample-border;
+}
