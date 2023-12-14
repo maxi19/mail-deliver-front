@@ -1,0 +1,23 @@
+Inicio:
+Cambio Titulo,Agregar info (YOEL)
+
+Datos:
+Cambiar Tabla, Agregar Fondo X
+Blanco prometio que la lista va a ser comparada con la base y solo va a mostrar los que no fueron enviados X
+(Blanco) 
+
+Lista Recibos:
+Cambiar Tabla, Agregar Fondo
+(yoel)
+
+nav
+cambiar logo x
+(yoel)
+
+modifcar Personal y agregar Personal x
+cambiar estructura x
+(ale)
+
+GENERAL:
+Distribuir permisos
+

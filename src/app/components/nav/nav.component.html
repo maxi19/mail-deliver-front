@@ -1,25 +1,22 @@
-<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom p-3 " style="background-color: #0A3143;">
+<header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom p-3 " style="background-color: #006D77;">
   <a routerLink="/inicio" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none text-white">
     <div class="logo bi me-2" >
-      <img src="fatimaLogo.png" alt="" width="40" height="52">
+      <img src="../../../assets/logo.png" alt="" width="40" height="52">
     </div> 
     <span class="fs-4">Secretaria</span>
   </a>
   <ul class="nav nav-pills text-white">
-   
-
-    <li class="nav-item"> {{username}} <img src="../../../assets/icons/account.svg" alt="" width="30" height="24" class="d-inline-block align-text-top"></li>
-
     <li class="nav-item"><a href="#" class="nav-link text-white">Recibos</a></li>
     <li class="nav-item"><a routerLink="/personal/listar" class="nav-link text-white">Personal</a></li>
-    <div class="text-end">
+    <div class="text-end" *ngIf="existeUsuarioLogeado()">
       <button href="#" class=" btn btn-danger" (click)="logOut()">Cerrar Session</button>
     </div>
   </ul>
 </header>
 
 
-<!--<nav>
+<!--
+  <nav>
   <div class="logo"></div>
   <ul>
     <li><a routerLink="/inicio">Inicio</a>

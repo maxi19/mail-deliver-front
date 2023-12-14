@@ -1,23 +1,72 @@
-<app-nav></app-nav>
-<div class="col-md-6 offset-md-3">
-    <h4 class="text-center">AGREGAR PERSONAL</h4>
-    <form (ngSubmit)= "onSubmit()">
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="form-label">Nombre Completo</label>
-            <input type="text" class="form-control" id="nombre" [(ngModel)]= "personal.nombres" name="nombre">
-        </div>
-        <div class="form-group">
-            <label for="exampleFormControlTextarea1" class="form-label">Apellido Completo</label>
-            <input type="text" class="form-control" id="apellido" [(ngModel)]= "personal.apellidos" name="apellido">
-        </div>
-        <div class="form-group">
+<div class="contenedor-principal">
 
-            <label for="exampleFormControlInput1" class="form-label">Email address</label>
-            <input type="email" class="form-control" id="email" placeholder="name@example.com" [(ngModel)]= "personal.email" name="email">
+    <button class="btn" (click)="volver()"><img src="../../../assets/arrow-left.svg" alt="" height="10px"
+            width="30px"></button>
 
+
+    <div class="cont-text" style="user-select: text">
+        <div class="" style="height: 90px;">
+            <img src="../../../assets/logo.png" alt="" class="mx-auto d-block">
         </div>
-        <br>
-        <button class="btn btn-success">Agregar</button>
+        <div class="text-center">
+            <h4>Nuevo Registro de Profesor</h4>
+        </div>
+    </div>
+    <form class="formulariologin" (ngSubmit)="onSubmit()" #personalForm  = "ngForm">
+        <div class="div-input">
+            <input type="text" class="form-control controls" id="nombre" placeholder="nombre completo"
+                [(ngModel)]="personal.nombres" required name="nombre" required #nombres="ngModel">
+                <div class="alert alert-danger" *ngIf= "nombres.invalid && (nombres.dirty || nombres.touched)">
+                    <div *ngIf= "nombres.errors.required">
+                        ingrese un nombre por favor
+                    </div>
+                </div>
+        </div>
 
+        <div class="div-input">
+            <input type="text" class="form-control controls" id="apellido" placeholder="apellido completo"
+                [(ngModel)]="personal.apellidos" required name="apellido" #apellidos="ngModel">
+                <div class="alert alert-danger" *ngIf= "apellidos.invalid && (apellidos.dirty || apellidos.touched)">
+                    <div *ngIf= "apellidos.errors.required">
+                        ingrese un apellido por favor
+                    </div>
+                </div>
+        </div>
+        <div class="div-input">
+            <input type="email" class="form-control controls" id="email" placeholder="name@fatimarem.edu.ar"
+                [(ngModel)]="personal.email" required name="email" #email="ngModel" pattern=".+@fatimarem.edu.ar">
+                <div class="alert alert-danger" *ngIf= "email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf= "email.errors.required">
+                        ingrese un email por favor
+                    </div>
+                    <div *ngIf= "email.errors.pattern">
+                        por favor ingrese el email con el siguente formato: profesor@fatimarem.edu.ar
+                    </div>
+                </div>
+                
+        </div>
+        <div class="div-input">
+            <div class="mt-2 mb-2 ">
+                <img src="../../../assets/patron-ejemplo.png" alt="" height="50px">
+            </div>
+            <input type="text" class="form-control controls" id="patron" placeholder="patron del recibo  (ven imagen)"
+                [(ngModel)]="personal.patron" required name="patron" #patron="ngModel" >
+                <div class="alert alert-danger" *ngIf= "email.invalid && (email.dirty || email.touched)">
+                    <div *ngIf= "patron.errors.required">
+                        Ingrese un patron de acuerdo a la imagen
+                    </div>
+                    <div *ngIf= "patron.errors.pattern">
+                        Ingrese un patron de archivo
+                    </div>
+                </div>
+                
+        </div>
+
+        <div class="div-apoyo" style="user-select: text">
+            <button class="botones btn btn-success" [disabled]="!personalForm.form.valid">Guardar</button>
+        </div>
     </form>
 </div>
+
+
+<app-mdl-confirmation ></app-mdl-confirmation>

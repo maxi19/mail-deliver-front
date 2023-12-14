@@ -43,15 +43,4 @@ export class PersonalService{
      delay(1500)
    )
   }
-
-  user(): Observable<UserDto>{
-    return this.http.get(`${this.baseURLLogin.concat("/user")}`).pipe(
-      map((resp:any) => {
-        return resp;
-       }
-     ),
-     delay(1500)
-   )
-  }
-
 }

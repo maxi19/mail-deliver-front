@@ -19,12 +19,14 @@ export class ListaPersonalComponent implements OnInit {
     this.obtenerPersonal();
    }
 irAgregarPersonal(){
-  this.router.navigate(['personal/agregar-personal'])
+  this.router.navigate(['personal/agregar-personal']);
 }
 modificarPersonal(id:number){
   this.router.navigate(['personal/modificar-personal', id]);
 }
-
+volver(){
+  this.router.navigate(['inicio']);
+}
 eliminarPersonal(personal_id:number){
   this.personalService.eliminarPersonal(personal_id).subscribe(dato => {
     console.log(dato);

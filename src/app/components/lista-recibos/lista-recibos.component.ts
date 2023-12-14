@@ -3,13 +3,14 @@ import { ListaPersonalComponent } from './../lista-personal/lista-personal.compo
 import { Personal } from 'src/app/models/personal';
 import { Component, OnInit } from '@angular/core';
 import { FileItem } from 'src/app/models/FileItem';
-import { ListaRecibosService } from 'src/services/lista-recibos.service';
+import { ListaRecibosService } from 'src/services/recibos-sin-identificar.service';
 import { PersonalService } from 'src/services/personal-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-lista-recibos',
   templateUrl: './lista-recibos.component.html',
-  styleUrls: ['./lista-recibos.component.css']
+  styleUrls: ['./lista-recibos.component.scss']
 })
 export class ListaRecibosComponent implements OnInit{
   recibosList : FileItem[];
@@ -23,9 +24,9 @@ export class ListaRecibosComponent implements OnInit{
     this.getPersonales();
     this.guardarTempFile(this.reciboIn);
   }
-  constructor(private listaRecibosService:ListaRecibosService, private personalService :PersonalService){}
+  constructor(private listaRecibosService:ListaRecibosService, private personalService :PersonalService,private router:Router){}
   getListaRecibo(){
-    this.listaRecibosService.obtenerListaRecibos().subscribe(dato =>{
+    this.listaRecibosService.listar().subscribe(dato =>{
       this.recibosList = dato;
     })
   }
@@ -43,4 +44,8 @@ export class ListaRecibosComponent implements OnInit{
   guardarTempFile(reciboIn : FileItem){
     this.tempFile = reciboIn;
   }
+  volver(){
+    this.router.navigate(['inicio'])
+  }
+  
 }

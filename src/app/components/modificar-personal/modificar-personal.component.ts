@@ -32,5 +32,9 @@ export class ModificarPersonalComponent implements OnInit{
     })
   }
 
+  volver(){
+    this.router.navigate(['personal/listar']);
+  }
+
   
 }

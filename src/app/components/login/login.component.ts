@@ -18,7 +18,7 @@ export class LoginComponent {
   user:UserDto = new UserDto();
   formulario: FormGroup;
   mostrarVentanaWarning:boolean = false;
-  mensajeError:string="Error con el usuario contraseña";
+  mensajeError:string="Error con el usuario o contraseña";
 
   
   constructor(private servicio : PersonalService , private formBuilder: FormBuilder, private router : Router  ) { }
@@ -41,7 +41,7 @@ export class LoginComponent {
       this.servicio.login(this.user).subscribe({
         next : (resp : Auth) =>{
           console.log(resp.token);
-          localStorage.setItem("Authorization", resp.token),
+          localStorage.setItem("Authorization",resp.token),
           this.router.navigateByUrl('inicio');
         },
         error : error =>{

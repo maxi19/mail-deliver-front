@@ -1,5 +1,6 @@
 * {
-  font-family: sans-serif; /* Change your font family */
+  font-family: sans-serif;
+  /* Change your font family */
 }
 
 .contenido-tabla {
@@ -16,7 +17,7 @@
 }
 
 .contenido-tabla thead tr {
-  background-color: #59427a;
+  background-color: #0799b6;
   color: #ffffff;
   font-weight: bold;
 }
@@ -28,7 +29,7 @@
 
 .contenido-tabla tbody tr {
   border-bottom: 1px solid #dddddd;
-background-color: #ffffff42;
+  background-color: #ffffff42;
 }
 
 
@@ -38,4 +39,20 @@ background-color: #ffffff42;
 
 .contenido-tabla tbody tr:last-of-type {
   border-bottom: 2px solid #59427a;
+}
+
+$ep-sample-border: 1px solid rgba(174, 174, 174, 0.25);
+
+.sample-wrapper {
+  overflow-y: auto;
+  max-height: 380px;
+  margin: 8px;
+}
+
+igx-switch {
+  padding: 16px;
+}
+
+igx-expansion-panel {
+  border: $ep-sample-border;
 }

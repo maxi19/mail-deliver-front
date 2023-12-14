@@ -3,11 +3,10 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree ,Rout
 import { Observable } from 'rxjs';
 import { PersonalService } from "../../../services/personal-service.service";
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class UserGuardGuard implements CanActivate {
+export class isLoggedGuard implements CanActivate {
 
   constructor(private router: Router, private personalService :PersonalService) { }
 
@@ -16,16 +15,11 @@ export class UserGuardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
   
-      if (localStorage.getItem('Authorization')) {
-        // logged in so return true
+      if (!localStorage.getItem('Authorization')) {
         return true;
     }
-
-    this.router.navigate(['login'], { queryParams: { returnUrl: state.url }});
+       this.router.navigate(['inicio'], { queryParams: { returnUrl: state.url }});
       return false;
   }
-  
-
-
-
 }
+  

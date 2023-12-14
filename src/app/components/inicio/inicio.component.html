@@ -1,9 +1,97 @@
-<app-nav></app-nav>
-<div class="container">
-    <h3>BIENVENIDO</h3>
-    <h3>ELIJA LA OPERACION:</h3>
-    <button type="button" class="btn btn-primary" routerLink="/">Leer Archivos</button>
-<button type="button" class="btn btn-secondary" routerLink="/personal/listar">Personal</button>
-<button type="button" class="btn btn-success" routerLink="/enviar/recibos/sinMatch">Enviar Sin Relacionar</button>
-<button type="button" class="btn btn-success" routerLink="/recibo/enviado/listar">Recibos Enviados</button>
+<div class="container d-flex align-items-center flex-column">
+    <!-- Masthead Avatar Image-->
+        <img width="300" height="300" src="../../../assets/happy.png">
+    
+    <!-- Masthead Heading-->
+    <h2 class="masthead-heading text-uppercase mb-0">Aplicacion de Secretaria</h2>
+    <!-- Icon Divider-->
+    <div class="divider-custom divider-light">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon"><svg class="svg-inline--fa fa-star" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" data-fa-i2svg=""><path fill="currentColor" d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z"></path></svg><!-- <i class="fas fa-star"></i> Font Awesome fontawesome.com --></div>
+        <div class="divider-custom-line"></div>
+    </div>
+    <!-- Masthead Subheading-->
 </div>
+
+<div class="container " style="margin-top: 100px;">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="circle-f d-flex align-items-center justify-content-center">
+                    <div id="color-ao" class="circle mx-auto d-flex align-items-center justify-content-center">
+                        
+                        <img src="../../../assets/archive.svg" alt="" height="30px" width="30px">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 id="espacio" class="card-title">Leer Archivos</h5>
+                    <p class="card-text">La lista de los archivos dentro de la Carpeta de Recibos</p>
+                    <button type="button" class="btn btn-primary" routerLink="/archivo/sinIdenticar/listar">Entrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="circle-f d-flex align-items-center justify-content-center">
+                    <div id="color-az" class="circle mx-auto d-flex align-items-center justify-content-center">
+                        <img src="../../../assets/user.svg" alt="" height="30px" width="30px">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 id="espacio" class="card-title">Docentes</h5>
+                    <p class="card-text">La Lista de todos los Docentes y su informacion basica</p>
+                    <button type="button" class="btn btn-secondary" routerLink="/personal/listar">Entrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="circle-f d-flex align-items-center justify-content-center">
+                    <div id="color-gr" class="circle mx-auto d-flex align-items-center justify-content-center">
+                        <img src="../../../assets/paper-plane.svg" alt="" height="30px" width="30px">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 id="espacio" class="card-title">Enviar Sin Relacionar</h5>
+                    <p class="card-text">Envio Individual Manual a un correo a eleccion</p>
+                    <button type="button" class="btn btn-success" routerLink="/enviar/recibos/sinMatch">Entrar</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="circle-f d-flex align-items-center justify-content-center">
+                    <div style="color: white;" id="color-rl" class="circle mx-auto d-flex align-items-center justify-content-center">
+                        <img style="color: white;" src="../../../assets/list.svg" alt="" height="30px" width="30px">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 id="espacio" class="card-title">Recibos Enviados</h5>
+            
+                    <p class="card-text">Revice la Lista de todos los Recibos Enviados hasta el momento</p>
+                    <button type="button" class="btn btn-success" routerLink="/recibo/enviado/listar">Entrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-4 mb-4">
+        <div class="col-sm-3">
+            <div class="card">
+                <div class="circle-f d-flex align-items-center justify-content-center">
+                    <div style="color: white;" id="color-rl" class="circle mx-auto d-flex align-items-center justify-content-center">
+                        <img style="color: white;" src="../../../assets/user.svg" alt="" height="30px" width="30px">
+                    </div>
+                </div>
+                <div class="card-body">
+                    <h5 id="espacio" class="card-title">Usuarios</h5>
+                    <p class="card-text">Agregue usuarios a la plataforma</p>
+                    <button type="button" class="btn btn-success" routerLink="/recibo/enviado/listar">Entrar</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>

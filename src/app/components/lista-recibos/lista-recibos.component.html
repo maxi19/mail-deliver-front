@@ -1,5 +1,48 @@
-<!-- The Modal -->
-<app-nav></app-nav>
+<!-- <table class="table table-dark">
+  <thead>
+    <tr>
+      <th scope="col">ID</th>
+      <th scope="col">Nombre de Archivo</th>
+      <th scope="col">Envio</th>
+      <th> Contador</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let reciboIn of recibosList; let i = index">
+      <td>{{reciboIn.id}}</td>
+      <td>{{reciboIn.nombre}}</td>
+      <td><button (click)="guardarTempFile(reciboIn)" data-bs-toggle="modal" data-bs-target="#myModal" type="button" class="btn btn-success">Enviar</button></td>
+    
+      <td>{{i}}</td>
+    </tr>
+  </tbody>
+</table>
+ -->
+<div class="container">
+  <h3 class="text-center">Recibos</h3>
+  <div class="row">
+    <div class="col-auto me-auto">
+      <button class="btn" (click)= "volver()"><img src="../../../assets/arrow-left.svg" alt="" height="10px" width="30px"></button>
+    </div>
+  
+  </div>
+  <table class="contenido-tabla">
+    <thead>
+      <tr >
+          <th scope="col">Nombre de Archivo</th>
+          <th scope="col" class="">Envio</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let reciboIn of recibosList; let i = index">
+        <td>{{reciboIn.nombre}}</td>
+        <td><button (click)="guardarTempFile(reciboIn)" data-bs-toggle="modal" data-bs-target="#myModal" type="button" class="btn btn-success">Enviar</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- The Modal -->
 <div class="modal" id="myModal">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -38,25 +81,5 @@
   </div>
 </div>
 
-
-
-
-<table class="table table-dark">
-  <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Nombre de Archivo</th>
-      <th scope="col">Envio</th>
-      <th> Contador</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let reciboIn of recibosList; let i = index">
-      <td>{{reciboIn.id}}</td>
-      <td>{{reciboIn.nombre}}</td>
-      <td><button (click)="guardarTempFile(reciboIn)" data-bs-toggle="modal" data-bs-target="#myModal" type="button" class="btn btn-success">Enviar</button></td>
-     <!---->
-      <td>{{i}}</td>
-    </tr>
-  </tbody>
-</table>
+</div>
+  

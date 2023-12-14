@@ -8,7 +8,9 @@ import { AgregarPersonalComponent } from './components/agregar-personal/agregar-
 import { InicioComponent } from './components/inicio/inicio.component';
 import { ListaReciboEnviadoComponent } from './components/lista-recibo-enviado/lista-recibo-enviado.component';
 import { LoginComponent } from "../app/components/login/login.component";
-import {  UserGuardGuard } from "../app/components/commons/user-guard.guard";
+import { UserGuardGuard } from "../app/components/commons/user-guard.guard";
+import { isLoggedGuard } from "../app/components/commons/is-logged.guard";
+import { DatosComponent } from './components/datos/datos.component';
 
 
 const routes: Routes = [
@@ -17,8 +19,10 @@ const routes: Routes = [
   {path: 'personal/agregar-personal', component:AgregarPersonalComponent, canActivate:[UserGuardGuard]},
   {path: 'personal/modificar-personal/:id', component:ModificarPersonalComponent,canActivate:[UserGuardGuard]},
   {path: 'recibo/enviado/listar', component:ListaReciboEnviadoComponent,canActivate:[UserGuardGuard]},
+  {path: "archivo/sinIdenticar/listar", component:DatosComponent,canActivate:[UserGuardGuard]},
   {path: 'enviar/recibos/sinMatch', component:ListaRecibosComponent,canActivate:[UserGuardGuard]},
-  { path: 'login', component : LoginComponent },
+  { path: 'login', component : LoginComponent , canActivate:[isLoggedGuard] },
+  
   {path : "**", redirectTo:'login', pathMatch:'full'}
 
 ];

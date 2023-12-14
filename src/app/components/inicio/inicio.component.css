@@ -1,0 +1,40 @@
+* {
+    font-family: sans-serif; /* Change your font family */
+  }
+  
+  .circle {
+    width: 80px;
+    height: 80px;
+    color: white;
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+  }
+  #color-ao{
+    background-color: #006D77;
+  }
+  #color-az{
+    background-color: #83C5BE;
+  }
+  #color-gr{
+    background-color: #82968C;
+  }
+  #color-rl{
+    background-color: #E29578;
+  }
+  .circle-f{
+    position: absolute;
+    left: 50%;
+    border: 0;
+    margin: 0;
+  }
+  .globe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 100px;
+  }
+  #espacio{
+    margin-top: 40px ;
+  }

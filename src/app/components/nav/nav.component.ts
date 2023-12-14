@@ -1,35 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { PersonalService } from "../../../services/personal-service.service";
-import { UserDto } from "../../models/User";
+import { TreeResourceStringsEN } from 'igniteui-angular/lib/core/i18n/tree-resources';
+
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html'
   //styleUrls: ['./nav.component.css']
 })
-export class NavComponent implements OnInit {
+export class NavComponent {
 
-  username :string = "";
-
-  constructor(private router : Router , private personalService : PersonalService){
-    this.username != localStorage.getItem("user");
-  }
-  ngOnInit(): void {
-    this.personalService.user().subscribe(  { next : (resp : UserDto) =>{
-      console.log(resp.username);
-      this.username = resp.username;
-      localStorage.setItem("user",resp.username)
-    }
-  }
-    )
-
+  constructor(private router : Router){
 
   }
  
-  logOut(){
-    localStorage.removeItem("token");
-    this.router.navigateByUrl('login');
+  existeUsuarioLogeado():boolean {
+    if (localStorage.getItem("Authorization")) {
+      return true
+    }
+    return false
   }
 
+
+  logOut(){
+    localStorage.removeItem("Authorization");
+    this.router.navigateByUrl('login');
+  }
 
 }
