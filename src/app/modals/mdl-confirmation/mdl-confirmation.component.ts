@@ -1,4 +1,4 @@
-import { Component, OnInit, Output,  EventEmitter  } from '@angular/core';
+import { Component, OnInit, Output,  EventEmitter, OnDestroy  } from '@angular/core';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 import { Subject } from 'rxjs';
 
@@ -7,20 +7,22 @@ import { Subject } from 'rxjs';
   templateUrl: './mdl-confirmation.component.html',
   styleUrls: ['./mdl-confirmation.component.css']
 })
-export class MdlConfirmationComponent implements OnInit {
+export class MdlConfirmationComponent implements OnInit, OnDestroy {
   public onClose: Subject<boolean>;
 
   title?: string;
   closeBtnName?: string;
   yesBtnName?: string;
-  list: string[] = [];
   datosModal = new Map();
   
   constructor(public bsModalRef: BsModalRef) {}
+
+  ngOnDestroy(): void {
+    throw new Error('Method not implemented.');
+  }
  
   ngOnInit() {
     this.onClose = new Subject();
-    this.list.push('PROFIT!!!');
   }
   
   confirmar(){

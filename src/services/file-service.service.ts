@@ -3,18 +3,19 @@ import { HttpClient,HttpResponse } from '@angular/common/http';
 import {  FileItem } from '../app/models/FileItem';
 import { map , delay } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+import { environments } from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class FileService {
 
-  private  URL_RESOURCE = "http://localhost:8080/msdeliver/archivos/nombres";
+  private  URL_RESOURCE = environments.url;
 
   constructor(private http: HttpClient) {
   }
   obtenerListaDeFiles():Observable<FileItem[]>{
-    return this.http.get<FileItem[]>(`${this.URL_RESOURCE}`);
+    return this.http.get<FileItem[]>(`${this.URL_RESOURCE + "msdeliver/archivos/nombres"}`);
   }
 
   files(){

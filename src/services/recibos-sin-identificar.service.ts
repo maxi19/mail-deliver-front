@@ -1,18 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Form, FormGroup } from '@angular/forms';
 import { Observable, map } from 'rxjs';
 import { DocenteDto } from 'src/app/models/DocenteDto';
 import { FileItem } from 'src/app/models/FileItem';
 import { ParaEnvioModule } from 'src/app/models/ParaEnvio';
-import { ReciboIdentificadoModule } from 'src/app/models/ReciboIdentificado';
-import { Personal } from 'src/app/models/personal';
+import { environments } from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ListaRecibosService {
-  private  URL_RESOURCE = "http://localhost:8080/";
+
+  private URL_RESOURCE = environments.url;
 
   constructor(private http: HttpClient) {
   }

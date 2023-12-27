@@ -5,37 +5,37 @@ import { Observable } from 'rxjs';
 import { UserDto } from "../app/models/User";
 import { Auth } from "../app/models/Auth";
 import { map , delay } from 'rxjs/operators';
+import { environments } from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonalService{
 
-  private baseURL = "http://localhost:8080/personal";
-
-  private baseURLLogin = "http://localhost:8080/usuarios";
+  private baseURL = environments.url;
 
   constructor(private http: HttpClient) {
+    this.baseURL = environments.url;
   }
   obtenerListaDePersonal():Observable<Personal[]>{
-    return this.http.get<Personal[]>(`${this.baseURL.concat("/listar")}`);
+    return this.http.get<Personal[]>(`${this.baseURL.concat("personal/listar")}`);
   }
 
   guardarPersonal(personal:Personal): Observable<Object>{
-    return this.http.post(`${this.baseURL.concat("/registrar")}`, personal);
+    return this.http.post(`${this.baseURL.concat("personal/registrar")}`, personal);
   }
   modificarPersonal(personal:Personal, id:number):Observable<Object>{
-    return this.http.put(`${this.baseURL.concat("/editarPersonal")}/${id}`,personal);
+    return this.http.put(`${this.baseURL.concat("personal/editarPersonal")}/${id}`,personal);
   }
   buscarPersonal(id_personal:number): Observable<Personal>{
-    return this.http.get<Personal>(`${this.baseURL.concat("/buscarPersonal")}/${id_personal}`);
+    return this.http.get<Personal>(`${this.baseURL.concat("personal/buscarPersonal")}/${id_personal}`);
   }
   eliminarPersonal(id_personal:number): Observable<Object>{
-    return this.http.get(`${this.baseURL.concat("/eliminarPersonal")}/${id_personal}`);
+    return this.http.get(`${this.baseURL.concat("personal/eliminarPersonal")}/${id_personal}`);
   }
   
   login(user:UserDto): Observable<Auth>{
-    return this.http.post(`${this.baseURLLogin.concat("/authenticate")}`, user).pipe(
+    return this.http.post(`${this.baseURL.concat("usuarios/authenticate")}`, user).pipe(
       map((resp:any) => {
         return resp;
        }
