@@ -19,7 +19,7 @@ export class DatosComponent implements OnInit{
   personales : Personal[];
   valor :any;
   tempItemDto = [''];
-
+  showModal: boolean = false;
   form: FormGroup;
   checkboxes = [''];
 
@@ -43,11 +43,12 @@ export class DatosComponent implements OnInit{
   }
   enviarRecibosDocente(docenteDto : DocenteDto){
     this.listaRecibosService.envioReciboVarios(docenteDto).subscribe(data =>{
+      this.showModal = false;
     })
   }
 
   getListaRecibo(){
-    this.listaRecibosService.obtenerListaRecibos().subscribe(dato =>{
+    this.listaRecibosService.listar().subscribe(dato =>{
       this.recibosList = dato;
     })
   }

@@ -65,7 +65,7 @@
           <tbody>
             <tr *ngFor="let personal of personales; let i = index">
                 <td>{{personal.email}}</td>
-                <td><button (click)="enviarReciboInd(tempFile,personal)" type="button" class="btn btn-success">Enviar</button></td>
+                <td><button (click)="enviarReciboInd(tempFile,personal)" type="button" class="btn btn-success"  data-bs-dismiss="modal">Enviar</button></td>
             </tr>
           </tbody>
         </table>

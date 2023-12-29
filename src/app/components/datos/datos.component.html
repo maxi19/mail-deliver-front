@@ -30,14 +30,14 @@
 </form>
 
 <!-- The Modal -->
-<div class="modal" id="myModal" tabindex="-1">
+<div class="modal fade" id="myModal" tabindex="-1" *ngIf="showModal">
   <div class="modal-dialog">
     <div class="modal-content">
 
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Confirmacion de Envio</h4>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <button type="button" class="btn-close" data-dismiss="modal"></button>
       </div>
 
       <!-- Modal body -->
@@ -54,8 +54,9 @@
                 <igx-expansion-panel>
                   <igx-expansion-panel-header>
                     <igx-expansion-panel-title>
-                      <h6>{{recib.email }} </h6><button (click)="enviarRecibosDocente(recib)" type="button"
-                        data-bs-dismiss="modal" class="btn btn-success">Enviar</button>
+                      <h6>{{recib.email}} </h6>
+                      <button (click)="enviarRecibosDocente(recib)" type="button"
+                         class="btn btn-success">Enviar</button>
                     </igx-expansion-panel-title>
                   </igx-expansion-panel-header>
 

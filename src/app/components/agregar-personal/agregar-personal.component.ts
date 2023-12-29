@@ -23,7 +23,7 @@ export class AgregarPersonalComponent implements OnInit {
 
   personal: Personal = new Personal();
   ngOnInit(): void {
-    this.modalService.hide();
+   // this.modalService.hide();
   }
   confirmarSolicitud() {
 
@@ -48,7 +48,7 @@ export class AgregarPersonalComponent implements OnInit {
       if (result) {
         this.registrarPersonal()
       }else{
-        this.modalService.hide()
+        this.modalService.hide;
       }
   })
 
@@ -58,9 +58,11 @@ export class AgregarPersonalComponent implements OnInit {
     this.personalService.guardarPersonal(this.personal).subscribe(dato=> {
         console.log(dato)
         this.irListarPersonal();
+
         },
         error => console.log(error)
     );
+  
   }
 
 

@@ -7,7 +7,7 @@ import { Subject } from 'rxjs';
   templateUrl: './mdl-confirmation.component.html',
   styleUrls: ['./mdl-confirmation.component.css']
 })
-export class MdlConfirmationComponent implements OnInit, OnDestroy {
+export class MdlConfirmationComponent implements OnInit {
   public onClose: Subject<boolean>;
 
   title?: string;
@@ -17,9 +17,7 @@ export class MdlConfirmationComponent implements OnInit, OnDestroy {
   
   constructor(public bsModalRef: BsModalRef) {}
 
-  ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
-  }
+ 
  
   ngOnInit() {
     this.onClose = new Subject();
