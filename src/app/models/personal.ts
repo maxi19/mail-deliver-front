@@ -1,7 +1,9 @@
 export class Personal {
-  id: number;
+   
+  personal_id: number;
   nombres: string;
   apellidos: string;
   email: string;
   patron: string;
+
 }

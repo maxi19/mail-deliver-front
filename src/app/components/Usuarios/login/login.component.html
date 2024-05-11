@@ -1,0 +1,27 @@
+<div class="contenedor-principal rounded container">
+  <div class="cont-text" style="user-select: text">
+    <div class="div-img">
+      <img src="../../../assets/logo.png" >
+    </div>
+      <h4 class="text-uppercase text-center">inicio sesion:</h4>
+  </div>
+  <form [formGroup]="formulario">
+    <div class="div-input">
+      <input class="controls" type="text" id="usuario" name="usuario" placeholder="Usuario" required
+        formControlName="username">
+      <input class="controls" type="password" id="contrasena" name="password" placeholder="Contraseña" required
+        formControlName="password">
+    </div>
+
+    <div   *ngIf="mostrarVentanaWarning">
+      <div class="alert alert-danger mb-3 text-center "  role="alert" style="height: 35px;">
+        {{mensajeError}}
+      </div>
+    </div>
+
+    <!--Submit button -->
+    <div class="div-apoyo row align-items-end" style="user-select: text">
+      <button type="button" class="botones" (click)="login()">Ingresar</button>
+    </div>
+  </form>
+</div>

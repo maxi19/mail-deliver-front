@@ -1,5 +1,20 @@
-import { CanActivateFn } from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree ,Router} from '@angular/router';
+import { Observable } from 'rxjs';
 
-export const hasRoleGuard: CanActivateFn = (route, state) => {
-  return true;
-};
+export class hasRoleGuard implements CanActivate {
+
+  constructor(private router: Router) { }
+
+
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+  
+      return true;
+  }
+  
+
+
+
+}
+

@@ -1,0 +1,34 @@
+<div class="container">
+  <h3 class="text-center">PERSONAL</h3>
+  <div class="row">
+    <div class="col-auto me-auto">
+      <button class="btn" (click)= "volver()"><img src="../../../assets/arrow-left.svg" alt="" height="10px" width="30px"></button>
+    </div>
+    <div class="col-auto">
+      <button type="button" (click)="irAgregarPersonal()" class="btn btn-success">Agregar</button>
+    </div>
+  
+  </div>
+  <table class="contenido-tabla">
+    <thead>
+      <tr>
+          <th scope="col">Nombre</th>
+          <th scope="col">Apellido</th>
+          <th scope="col">Email</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <tr *ngFor="let personal of personales; let i = index">
+            <td>{{personal.nombres}}</td>
+            <td>{{personal.apellidos}}</td>
+            <td>{{personal.email}}</td>
+            <td><button (click)= "modificarPersonal(personal.personal_id)" class="btn btn-success"  >Modificar</button></td>
+            <td><button  (click) ="eliminarPersonal(personal.personal_id)" type="button" class="btn btn-danger">Eliminar</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+  

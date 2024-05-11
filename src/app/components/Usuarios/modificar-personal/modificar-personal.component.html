@@ -1,0 +1,33 @@
+<div class="contenedor-principal">
+
+    <button class="btn" (click)="volver()"><img src="../../../assets/arrow-left.svg" alt="" height="10px"
+            width="30px"></button>
+
+
+    <div class="cont-text" style="user-select: text">
+        <div class="" style="height: 90px;">
+            <img src="../../../assets/logo.png" alt="" class="mx-auto d-block">
+        </div>
+        <div class="text-center">
+            <h4>Nuevo Registro de Profesor</h4>
+        </div>
+    </div>
+    <form class="formulariologin"  >
+        <div class="div-input">
+            <input type="text" class="form-control controls" id="nombre" placeholder="nombre completo">
+        </div>
+
+        <div class="div-input">
+            <input type="text" class="form-control controls" id="apellido" placeholder="apellido completo">
+                <div class="alert alert-danger">
+                </div>
+        </div>
+        <div class="div-input">
+            <input type="email" class="form-control controls" id="email" placeholder="name@fatimarem.edu.ar"
+               pattern=".+@fatimarem.edu.ar">  
+        </div>
+        <div class="div-apoyo" style="user-select: text">
+            <button class="botones btn btn-success" >Guardar</button>
+        </div>
+    </form>
+</div>

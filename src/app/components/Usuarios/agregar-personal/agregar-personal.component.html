@@ -1,0 +1,82 @@
+<div class="contenedor-principal">
+
+    <button class="btn" (click)="volver()"><img src="../../../assets/arrow-left.svg" alt="" height="10px"
+            width="30px"></button>
+
+
+    <div class="cont-text" style="user-select: text">
+        <div class="" style="height: 90px;">
+            <img src="../../../assets/logo.png" alt="" class="mx-auto d-block">
+        </div>
+        <div class="text-center">
+            <h4>Nuevo Registro de Profesor</h4>
+        </div>
+    </div>
+    <form class="formulariologin" [formGroup]="altaUsuarioForm" >
+        <div class="div-input">
+            <input type="text" 
+                    class="form-control controls" 
+                    id="nombres" 
+                    placeholder="nombre completo" 
+                    name="nombres" 
+                    formControlName="nombres" 
+                    [class.is-invalid]="nombreNoValido()"/> 
+                    <span *ngIf="nombreNoValido()" class="invalid-feedback">
+                        Nombre is required.
+                    </span>
+        </div>
+
+        <div class="div-input">
+            <input type="text" 
+                    class="form-control controls" 
+                    id="apellidos" 
+                    placeholder="apellido completo" 
+                    name="apellidos" 
+                    formControlName="apellidos"
+                    [class.is-invalid]="apeliidoNoValido()"/> 
+                    <span *ngIf="apeliidoNoValido()" class="invalid-feedback">
+                        Apellido is required.
+                    </span>
+        </div>
+
+        <div class="div-input">
+            <input type="email"
+                    class="form-control controls" 
+                    id="email" 
+                    placeholder="name@fatimarem.edu.ar" 
+                    name="email" 
+                    formControlName="email"
+                    [class.is-invalid]="emailNoValido()"/> 
+                    <span *ngIf="emailNoValido()" class="invalid-feedback">
+                        Email is required.
+                    </span>
+        </div>
+        <div class="div-input">
+            <select class="form-control controls">
+                <option selected>Seleccione un rol</option>
+                <option value="1">Docente</option>
+                <option value="2">Profesor</option>
+                <option value="3">Administrador</option>
+              </select>
+        </div>
+        <div class="div-input">
+            <div class="mt-2 mb-2 ">
+                <img src="../../../assets/patron-ejemplo.png" alt="" height="50px">
+            </div>
+            <input type="text" 
+                    class="form-control controls" 
+                    id="patron" 
+                    placeholder="patron del recibo  (ven imagen)" 
+                    name="patron" 
+                    formControlName="patron" >
+        </div>
+
+        <div class="div-apoyo" style="user-select: text">
+            <button type="button" class="botones btn btn-success" (click)="abrirPopUp()"  [disabled]="!altaUsuarioForm.valid" >Registrar</button>
+        </div>
+    </form>
+</div>
+
+
+<app-mdl-confirmation ></app-mdl-confirmation>
+<app-mdl-error></app-mdl-error>

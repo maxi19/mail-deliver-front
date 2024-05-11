@@ -1,7 +1,6 @@
 export class UserDto {
-    username: string;
-    password: string;
+    username: String;
+    password: String;
     firstName: String;
-    lastName: string;
-
+    lastName: String;
 }

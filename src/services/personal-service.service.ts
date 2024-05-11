@@ -5,37 +5,60 @@ import { Observable } from 'rxjs';
 import { UserDto } from "../app/models/User";
 import { Auth } from "../app/models/Auth";
 import { map , delay } from 'rxjs/operators';
+import { environments } from "../environments/environments";
 
 @Injectable({
   providedIn: 'root'
 })
 export class PersonalService{
 
-  private baseURL = "http://localhost:8080/personal";
-
-  private baseURLLogin = "http://localhost:8080/usuarios";
+  private baseURL = environments.url;
 
   constructor(private http: HttpClient) {
+    this.baseURL = environments.url;
   }
   obtenerListaDePersonal():Observable<Personal[]>{
-    return this.http.get<Personal[]>(`${this.baseURL.concat("/listar")}`);
+    return this.http.get<Personal[]>(`${this.baseURL.concat("usuarios/listar")}`);
   }
 
   guardarPersonal(personal:Personal): Observable<Object>{
-    return this.http.post(`${this.baseURL.concat("/registrar")}`, personal);
+    return this.http.post(`${this.baseURL.concat("usuarios/registrar")}`, personal);
   }
   modificarPersonal(personal:Personal, id:number):Observable<Object>{
-    return this.http.put(`${this.baseURL.concat("/editarPersonal")}/${id}`,personal);
+    return this.http.put(`${this.baseURL.concat("usuarios/editarPersonal")}/${id}`,personal);
   }
   buscarPersonal(id_personal:number): Observable<Personal>{
-    return this.http.get<Personal>(`${this.baseURL.concat("/buscarPersonal")}/${id_personal}`);
+    return this.http.get<Personal>(`${this.baseURL.concat("usuarios/buscarPersonal")}/${id_personal}`);
   }
   eliminarPersonal(id_personal:number): Observable<Object>{
-    return this.http.get(`${this.baseURL.concat("/eliminarPersonal")}/${id_personal}`);
+    return this.http.get(`${this.baseURL.concat("usuarios/eliminarPersonal")}/${id_personal}`);
+  }
+  consultarRol(): Observable<Object>{
+    return this.http.get(`${this.baseURL.concat("usuarios/roles-test")}`);
   }
   
+  consultarRolLocal(): String{
+    return localStorage.getItem("rol");
+  }
+
+  consultarRolUsuario(rolesAllowed:[]) : boolean {
+    const roles : String = this.consultarRolLocal();    
+    var tienePermisos : boolean = false;
+    if (rolesAllowed != null && roles) {
+        for (let i = 0; i < rolesAllowed.length; i++) {
+          const element = rolesAllowed[i];
+          if (rolesAllowed [i] === roles) {
+            tienePermisos = true;
+          }
+        }
+    }
+    return tienePermisos
+  }
+
+
+
   login(user:UserDto): Observable<Auth>{
-    return this.http.post(`${this.baseURLLogin.concat("/authenticate")}`, user).pipe(
+    return this.http.post(`${this.baseURL.concat("usuarios/authenticate")}`, user).pipe(
       map((resp:any) => {
         return resp;
        }
@@ -43,15 +66,4 @@ export class PersonalService{
      delay(1500)
    )
   }
-
-  user(): Observable<UserDto>{
-    return this.http.get(`${this.baseURLLogin.concat("/user")}`).pipe(
-      map((resp:any) => {
-        return resp;
-       }
-     ),
-     delay(1500)
-   )
-  }
-
 }
