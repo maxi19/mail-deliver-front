@@ -18,8 +18,8 @@ export class UserGuardGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       var valida : boolean = false;
       if (localStorage.getItem('Authorization')) {
-
-       var tienePermisos : boolean =  this.personalService.consultarRolUsuario(route.data['role']);
+       var permisos: [] = route.data['role'];
+       var tienePermisos : boolean =  this.personalService.consultarRolUsuario(permisos);
 
         return tienePermisos;
     }

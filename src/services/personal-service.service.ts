@@ -1,5 +1,5 @@
 import { Injectable, } from '@angular/core';
-import { HttpClient,HttpResponse } from '@angular/common/http';
+import { HttpClient,HttpRequest,HttpResponse,HttpEvent,HttpParams } from '@angular/common/http';
 import { Personal } from 'src/app/models/personal';
 import { Observable } from 'rxjs';
 import { UserDto } from "../app/models/User";
@@ -41,16 +41,12 @@ export class PersonalService{
     return localStorage.getItem("rol");
   }
 
-  consultarRolUsuario(rolesAllowed:[]) : boolean {
+  consultarRolUsuario( rolesPermitidos:String[]) : boolean {
     const roles : String = this.consultarRolLocal();    
     var tienePermisos : boolean = false;
-    if (rolesAllowed != null && roles) {
-        for (let i = 0; i < rolesAllowed.length; i++) {
-          const element = rolesAllowed[i];
-          if (rolesAllowed [i] === roles) {
-            tienePermisos = true;
-          }
-        }
+    if (rolesPermitidos != null && roles) {
+     console.log( rolesPermitidos.includes(roles));
+      tienePermisos = rolesPermitidos.includes(roles);
     }
     return tienePermisos
   }
@@ -66,4 +62,25 @@ export class PersonalService{
      delay(1500)
    )
   }
+
+  upload(file: File): Observable<HttpEvent<any>>{
+    const formData: FormData = new FormData();
+    formData.append('files', file);
+   
+    const req = new HttpRequest('POST', `${this.baseURL}upload`, formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+    return this.http.request(req);
+  }
+
+  getFiles(){
+    return this.http.get(`${this.baseURL}files`);
+  }
+
+  deleteFile(filename: string){
+    return this.http.get(`${this.baseURL}delete/${filename}`);
+  }
+
+
 }

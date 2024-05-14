@@ -31,7 +31,12 @@ import { MdlConfirmationComponent } from './modals/mdl-confirmation/mdl-confirma
 import { IgxExpansionPanelModule } from 'igniteui-angular';
 import { IgxExpansionPanelComponent } from 'igniteui-angular';
 import { MdlErrorComponent } from './modals/mdl-error/mdl-error.component';
+import { RecibosUploadComponent } from './components/recibos/recibos-upload/recibos-upload.component';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatButtonModule} from '@angular/material/button';
+import {MatCardModule} from '@angular/material/card';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -49,6 +54,7 @@ import { MdlErrorComponent } from './modals/mdl-error/mdl-error.component';
     LoginComponent,
     MdlConfirmationComponent,
     MdlErrorComponent,
+    RecibosUploadComponent,
 
   ],
   imports: [
@@ -63,6 +69,10 @@ import { MdlErrorComponent } from './modals/mdl-error/mdl-error.component';
     NgxSpinnerModule,
     TooltipModule,
     IgxExpansionPanelModule,
+    MatProgressBarModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
     ModalModule.forRoot()
   ],
   providers: [

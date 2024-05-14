@@ -5,8 +5,6 @@ import { PersonalService } from "../../../../services/personal-service.service";
 import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Auth } from "../../../models/Auth";
-import { Respuesta } from "../../../models/Respuesta ";
-import { Rol } from '../../../models/Rol';
 
 @Component({
   selector: 'app-login',

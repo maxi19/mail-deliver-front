@@ -12,7 +12,7 @@ import { UserGuardGuard } from "../app/components/commons/user-guard.guard";
 import { isLoggedGuard } from "../app/components/commons/is-logged.guard";
 import { DatosComponent } from './components/recibos/datos/datos.component';
 import { hasRoleGuard } from './components/commons/has-role.guard';
-
+import { RecibosUploadComponent } from "./components/recibos/recibos-upload/recibos-upload.component";
 
 const routes: Routes = [
   {
@@ -63,6 +63,11 @@ const routes: Routes = [
     path: 'enviar/recibos/sinMatch', 
     component:ListaRecibosComponent,
     canActivate:[UserGuardGuard]
+  },
+  {
+    path: 'archivo/gestor-archivos', 
+    component:RecibosUploadComponent,
+    canActivate:[]
   },
   { 
     path: 'login', 
