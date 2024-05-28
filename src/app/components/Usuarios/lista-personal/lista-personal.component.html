@@ -1,3 +1,5 @@
+<mat-progress-bar mode="determinate" value="{{contador}}"></mat-progress-bar> 
+
 <div class="container">
   <h3 class="text-center">PERSONAL</h3>
   <div class="row">
@@ -21,14 +23,18 @@
     </thead>
     
     <tbody>
-      <tr *ngFor="let personal of personales; let i = index">
-            <td>{{personal.nombres}}</td>
+      <tr *ngFor="let personal of fetchAllPersonResponse.content; let i = index">
+            <td>{{personal.username}}</td>
             <td>{{personal.apellidos}}</td>
             <td>{{personal.email}}</td>
-            <td><button (click)= "modificarPersonal(personal.personal_id)" class="btn btn-success"  >Modificar</button></td>
-            <td><button  (click) ="eliminarPersonal(personal.personal_id)" type="button" class="btn btn-danger">Eliminar</button></td>
+            <td><button (click)= "modificarPersonal(personal.id)" class="btn btn-success"  >Modificar</button></td>
+            <td><button  (click) ="eliminarPersonal(personal.id)" type="button" class="btn btn-danger">Eliminar</button></td>
       </tr>
     </tbody>
   </table>
+
+  <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" 
+                              aria-label="Select page" (page)="onPageChanged($event) " >
+</mat-paginator>
 </div>
-  
+

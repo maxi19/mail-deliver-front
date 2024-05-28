@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { finalize } from "rxjs/operators";
-import { NgxSpinnerService } from 'ngx-spinner';
+import {SpinnerServiceService} from "../../../services/spinner-service.service"
 
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor {
@@ -16,23 +16,14 @@ export class LoadingInterceptor implements HttpInterceptor {
   private idMessage !: string;
 
 
-  constructor(public ngxspinnerService : NgxSpinnerService) {}
+  constructor(public spinerService :SpinnerServiceService ) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-   
-    if (!this.countRequest) {
-      this.ngxspinnerService.show()
-    }
-    this.countRequest++;
-
-    return next.handle(request)
-      .pipe(
-        finalize(() => {
-          this.countRequest--;
-          if (!this.countRequest) {
-            this.ngxspinnerService.hide();
-          }
-        })
-      );
+    this.spinerService.mostrarSpinner();  
+    return next.handle(request).pipe(
+      finalize(() =>this.spinerService.ocultar())
+    );
   }
-}
+  }
+
+

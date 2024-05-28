@@ -5,5 +5,5 @@ export class Personal {
   apellidos: string;
   email: string;
   patron: string;
-
+  
 }

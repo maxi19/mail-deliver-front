@@ -1,11 +1,12 @@
 import { Injectable, } from '@angular/core';
-import { HttpClient,HttpRequest,HttpResponse,HttpEvent,HttpParams } from '@angular/common/http';
+import { HttpClient,HttpRequest,HttpResponse,HttpEvent,HttpParams, HttpHeaders } from '@angular/common/http';
 import { Personal } from 'src/app/models/personal';
 import { Observable } from 'rxjs';
 import { UserDto } from "../app/models/User";
 import { Auth } from "../app/models/Auth";
 import { map , delay } from 'rxjs/operators';
 import { environments } from "../environments/environments";
+import { FetchAllPersonResponse } from 'src/app/models/FetchAllPersonResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,23 @@ export class PersonalService{
   obtenerListaDePersonal():Observable<Personal[]>{
     return this.http.get<Personal[]>(`${this.baseURL.concat("usuarios/listar")}`);
   }
+  obtenerListaDePersonaPaginado(pageNo : number, pageSize :number, sortBy : string ):Observable<FetchAllPersonResponse>{
+    let params   = new HttpParams()
+    .set("pageNo",pageNo)
+    .set("pageSize",pageSize)
+    .set("sortBy",sortBy);
+    //let params: URLSearchParams = new URLSearchParams();
+    //params.append("pageNo",pageNo+"");
+    //params.append("pageSize",pageSize+"");
+    //params.append("sortBy",sortBy);
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get<FetchAllPersonResponse>(`${this.baseURL.concat("usuarios/usuarios")}`, { headers : headers, params : params}  );
+    
+  }
+
+
+  
 
   guardarPersonal(personal:Personal): Observable<Object>{
     return this.http.post(`${this.baseURL.concat("usuarios/registrar")}`, personal);

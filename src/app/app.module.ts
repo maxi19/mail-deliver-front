@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 
@@ -35,8 +35,11 @@ import { RecibosUploadComponent } from './components/recibos/recibos-upload/reci
 
 import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatButtonModule} from '@angular/material/button';
+import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
+
+
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -73,6 +76,7 @@ import {MatIconModule} from '@angular/material/icon';
     MatButtonModule,
     MatCardModule,
     MatIconModule,
+    MatPaginatorModule,
     ModalModule.forRoot()
   ],
   providers: [
@@ -85,10 +89,15 @@ import {MatIconModule} from '@angular/material/icon';
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorCatchingInterceptor,
       multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
     }
 
   ],
-  schemas: []
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }

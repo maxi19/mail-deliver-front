@@ -6,6 +6,7 @@ import { FileItem } from 'src/app/models/FileItem';
 import { ListaRecibosService } from 'src/services/recibos-sin-identificar.service';
 import { PersonalService } from 'src/services/personal-service.service';
 import { Router } from '@angular/router';
+import { SpinnerServiceService } from "../../../../services/spinner-service.service";
 
 @Component({
   selector: 'app-lista-recibos',
@@ -18,13 +19,14 @@ export class ListaRecibosComponent implements OnInit{
   tempFile : FileItem;
   paraEnviar :ParaEnvioModule;
   reciboIn :FileItem;
-
+  
   ngOnInit(): void {
+    this.spinner.mostrarSpinner();
     this.getListaRecibo();
     this.getPersonales();
     this.guardarTempFile(this.reciboIn);
   }
-  constructor(private listaRecibosService:ListaRecibosService, private personalService :PersonalService,private router:Router){}
+  constructor(private spinner : SpinnerServiceService,private listaRecibosService:ListaRecibosService, private personalService :PersonalService,private router:Router){}
   getListaRecibo(){
     this.listaRecibosService.listar().subscribe(dato =>{
       this.recibosList = dato;
