@@ -1,11 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Personal } from 'src/app/models/personal';
-import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
 import { PersonalService } from 'src/services/personal-service.service';
+import { ContantesModal } from "../../commons/constantes/ModalOptionsContants";
 import { MdlConfirmationComponent  } from "src/app/modals/mdl-confirmation/mdl-confirmation.component";
 import { MdlErrorComponent  } from "src/app/modals/mdl-error/mdl-error.component";
 
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
 
 @Component({
@@ -63,23 +64,13 @@ export class AgregarPersonalComponent implements OnInit {
     this.personal = new Personal();
     this.altaUsuarioForm.patchValue(this.personal)
     const datosModal = new Map();
-    const initialState: ModalOptions = {
-      initialState: {
-        title: 'Confirmacion Nuevo Usuario',
-        datosModal: { 
-          "Nombres":this.altaUsuarioForm.get("nombres").value,
-          "Apellidos":this.altaUsuarioForm.get("apellidos").value,
-          "Email":this.altaUsuarioForm.get("email").value,
-          "Patron de recibo" :"Sin definir"
-        }
-      },
-      keyboard : true,
-      animated : true,
-      backdrop : true
-    };
-    this.bsModalRef = this.modalService.show(MdlConfirmationComponent, initialState);
-    this.bsModalRef.content.closeBtnName = 'Cancelar';
-    this.bsModalRef.content.yesBtnName = 'Aceptar';
+    datosModal.set("nombres",this.altaUsuarioForm.controls["nombres"].value);
+    datosModal.set("apellidos",this.altaUsuarioForm.controls["apellidos"].value);
+    datosModal.set("email",this.altaUsuarioForm.controls["email"].value);
+    
+    this.bsModalRef = this.modalService.show(MdlConfirmationComponent, 
+        ContantesModal.optModalAgregarPersonal(datosModal, "Agregar nuevo Personal","Confirmar","Cancelar" ));
+
     this.bsModalRef.content.onClose.subscribe(result => {
       if (result) {
         this.registrarPersonal()
@@ -103,6 +94,8 @@ export class AgregarPersonalComponent implements OnInit {
           nombres :this.altaUsuarioForm.get("nombres").value,
           apellidos :this.altaUsuarioForm.get("apellidos").value,
           email :this.altaUsuarioForm.get("email").value,
+          recibos : null,
+          fileItems : null,
           patron :""
    }
      
@@ -144,5 +137,9 @@ export class AgregarPersonalComponent implements OnInit {
   }
   volver():void{
     this.router.navigate(['personal/listar'])
+  }
+
+  buildDataToModal(){
+    
   }
 }

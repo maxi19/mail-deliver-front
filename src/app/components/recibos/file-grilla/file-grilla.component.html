@@ -1,0 +1,17 @@
+
+
+    <div class="col-lg-4">
+      <mat-card>
+        <mat-card-header>
+          <h4>Recibos pendientes</h4>
+        </mat-card-header>
+        <mat-card-content>
+          <div cdkDropList [cdkDropListData]="filesEnBase" class="example-list"(cdkDropListDropped)="drop($event)" >
+              <div class="example-box" cdkDrag  *ngFor="let file of filesEnBase; let i = index;"  >
+                <mat-checkbox class="example-margin">  {{file.name}} </mat-checkbox>
+              </div>
+          </div>
+          <input type="button" value="Agregar recibos" class="btn btn-primary" (click)="agregarRecibos()">
+        </mat-card-content>
+      </mat-card>
+  </div>

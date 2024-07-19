@@ -5,7 +5,12 @@
     </div> 
     <span class="fs-4">Secretaria</span>
   </a>
-  <ul class="nav nav-pills text-white">
+  <ul  class="nav nav-pills text-white" >
+    <li class="nav-item" ><a href="#" class="nav-link text-white" *ngIf="existeUsuarioLogeado()">
+      <img src="../../../../assets/icons/user.svg" width="35" height="35" class="d-inline-block align-top" alt="">
+      {{username}}
+    </a></li>
+  
     <li class="nav-item"><a href="#" class="nav-link text-white">Recibos</a></li>
     <li class="nav-item"><a routerLink="/personal/listar" class="nav-link text-white">Personal</a></li>
     <div class="text-end" *ngIf="existeUsuarioLogeado()">

@@ -15,8 +15,8 @@
 
 <div class="container " style="margin-top: 100px;">
     <div class="row">
-        <div class="col-sm-3">
-            <div class="card">
+        <div class="col-sm-3" *appRole="['ADMIN','SECRETARIA']">
+            <div class="card"  >
                 <div class="circle-f d-flex align-items-center justify-content-center">
                     <div id="color-ao" class="circle mx-auto d-flex align-items-center justify-content-center">
                         
@@ -24,13 +24,13 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 id="espacio" class="card-title">Leer Archivos</h5>
+                    <h5 id="espacio" class="card-title">Recibos</h5>
                     <p class="card-text">La lista de los archivos dentro de la Carpeta de Recibos</p>
                     <button type="button" class="btn btn-primary" routerLink="/archivo/sinIdenticar/listar">Entrar</button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-3" *appRole="['ADMIN']" >
             <div class="card">
                 <div class="circle-f d-flex align-items-center justify-content-center">
                     <div id="color-az" class="circle mx-auto d-flex align-items-center justify-content-center">
@@ -38,13 +38,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 id="espacio" class="card-title">Docentes</h5>
-                    <p class="card-text">La Lista de todos los Docentes y su informacion basica</p>
+                    <h5 id="espacio" class="card-title">Usuarios</h5>
+                    <p class="card-text">Todos</p>
                     <button type="button" class="btn btn-secondary" routerLink="/personal/listar">Entrar</button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        
+        <div class="col-sm-3" *appRole="['ADMIN','SECRETARIA','DOCENTE']">
             <div class="card">
                 <div class="circle-f d-flex align-items-center justify-content-center">
                     <div id="color-gr" class="circle mx-auto d-flex align-items-center justify-content-center">
@@ -52,13 +53,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 id="espacio" class="card-title">Enviar Sin Relacionar</h5>
-                    <p class="card-text">Envio Individual Manual a un correo a eleccion</p>
-                    <button type="button" class="btn btn-success" routerLink="/enviar/recibos/sinMatch">Entrar</button>
+                    <h5 id="espacio" class="card-title">Ver mi perfil</h5>
+                    <p class="card-text">ver mi perfil</p>
+                    <button type="button" class="btn btn-success" >Entrar</button>
                 </div>
             </div>
         </div>
-        <div class="col-sm-3">
+        
+        <div class="col-sm-3" *appRole="['ADMIN','SECRETARIA','DOCENTE']">
             <div class="card">
                 <div class="circle-f d-flex align-items-center justify-content-center">
                     <div style="color: white;" id="color-rl" class="circle mx-auto d-flex align-items-center justify-content-center">
@@ -66,31 +68,14 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <h5 id="espacio" class="card-title">Recibos Enviados</h5>
+                    <h5 id="espacio" class="card-title">Mis recibos</h5>
             
                     <p class="card-text">Revice la Lista de todos los Recibos Enviados hasta el momento</p>
-                    <button type="button" class="btn btn-success" routerLink="/recibo/enviado/listar">Entrar</button>
+                    <button type="button" class="btn btn-success" >Entrar</button>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row mt-4 mb-4">
-        <div class="col-sm-3">
-            <div class="card">
-                <div class="circle-f d-flex align-items-center justify-content-center">
-                    <div style="color: white;" id="color-rl" class="circle mx-auto d-flex align-items-center justify-content-center">
-                        <img style="color: white;" src="../../../assets/user.svg" alt="" height="30px" width="30px">
-                    </div>
-                </div>
-                <div class="card-body">
-                    <h5 id="espacio" class="card-title">Usuarios</h5>
-                    <p class="card-text">Agregue usuarios a la plataforma</p>
-                    <button type="button" class="btn btn-success" routerLink="/recibo/enviado/listar">Entrar</button>
-                </div>
-            </div>
-        </div>
-
+        
     </div>
 
 </div>

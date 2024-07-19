@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ListaRecibosComponent } from './components/recibos/lista-recibos/lista-recibos.component';
-import { AppComponent } from './app.component';
 import { ListaPersonalComponent } from './components/Usuarios/lista-personal/lista-personal.component';
 import { ModificarPersonalComponent } from './components/Usuarios/modificar-personal/modificar-personal.component';
 import { AgregarPersonalComponent } from './components/Usuarios/agregar-personal/agregar-personal.component';
@@ -9,15 +8,17 @@ import { InicioComponent } from './components/layout/inicio/inicio.component';
 import { ListaReciboEnviadoComponent } from './components/recibos/lista-recibo-enviado/lista-recibo-enviado.component';
 import { LoginComponent } from "./components/Usuarios/login/login.component";
 import { UserGuardGuard } from "../app/components/commons/user-guard.guard";
-import { isLoggedGuard } from "../app/components/commons/is-logged.guard";
 import { DatosComponent } from './components/recibos/datos/datos.component';
-import { hasRoleGuard } from './components/commons/has-role.guard';
 import { RecibosUploadComponent } from "./components/recibos/recibos-upload/recibos-upload.component";
 
 const routes: Routes = [
   {
     path: 'inicio', 
-    component:InicioComponent
+    component:InicioComponent, 
+    canActivate:[UserGuardGuard ],
+    data :{
+      role : ["ADMIN", "SECRETARIA","DOCENTE"]
+    } 
   },
   { 
     path: 'personal/listar', 

@@ -1,6 +1,8 @@
 export class FileItem {
 
     id:number;
-    nombre: String;
-
+    nombre: string;
+    name : string;
+    url : string;
+    completed : boolean
 }

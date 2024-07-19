@@ -1,8 +1,9 @@
 import { FileService } from '../../../../services/file-service.service';
 import { Personal } from '../../../models/personal';
-import { Component, OnInit } from '@angular/core';
 import { PersonalService } from 'src/services/personal-service.service';
 import { FileItem } from 'src/app/models/FileItem';
+
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-envio-archivos',

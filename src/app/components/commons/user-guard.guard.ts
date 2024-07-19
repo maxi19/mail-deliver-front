@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree ,Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import { PersonalService } from "../../../services/personal-service.service";
-import { Rol } from '../../models/Rol';
+
 
 
 @Injectable({
@@ -20,7 +20,6 @@ export class UserGuardGuard implements CanActivate {
       if (localStorage.getItem('Authorization')) {
        var permisos: [] = route.data['role'];
        var tienePermisos : boolean =  this.personalService.consultarRolUsuario(permisos);
-
         return tienePermisos;
     }
 

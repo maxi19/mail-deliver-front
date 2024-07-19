@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PersonalService } from 'src/services/personal-service.service';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
@@ -11,12 +11,14 @@ import { HttpEventType, HttpResponse } from '@angular/common/http';
 export class RecibosUploadComponent implements OnInit {
 
   selectedFiles: FileList;
-  //Es el array que contiene los items para mostrar el progreso de subida de cada archivo
   progressInfo = [];
   message = '';
   imageName = "";
 
   fileInfos: Observable<any>;
+ 
+
+  @Output() grillaVacia = new EventEmitter<boolean>();
 
   constructor(private servicio : PersonalService) { }
 
@@ -60,6 +62,7 @@ export class RecibosUploadComponent implements OnInit {
       this.fileInfos = this.servicio.getFiles();
     });
   }
+
 
 
 }

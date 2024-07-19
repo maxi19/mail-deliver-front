@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { UserDto } from 'src/app/models/User';
+import { PersonalService } from "../../../../services/personal-service.service";
 
 @Component({
   selector: 'app-inicio',
@@ -6,5 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./inicio.component.css']
 })
 export class InicioComponent {
+
+
 
 }

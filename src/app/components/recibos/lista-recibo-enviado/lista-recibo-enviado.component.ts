@@ -1,7 +1,8 @@
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+
 import { ReciboEnviadoService } from '../../../../services/recibo-enviado.service';
 import { ReciboEnviado } from '../../../models/ReciboEnviado';
-import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-lista-recibo-enviado',

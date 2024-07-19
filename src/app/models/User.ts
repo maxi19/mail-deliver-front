@@ -1,6 +1,9 @@
 export class UserDto {
-    username: String;
-    password: String;
-    firstName: String;
-    lastName: String;
+    username: string;
+    password: string;
+    firstName: string;
+    lastName: string;
+    email :string;
+    completo :string;
+    scopes :string[] = [];
 }

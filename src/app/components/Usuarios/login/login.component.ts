@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { UserDto} from '../../../models/User';
-
-import { PersonalService } from "../../../../services/personal-service.service";
 import { FormBuilder, FormGroup, FormControl, Validators, NgModel } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { UserDto} from '../../../models/User';
+import { PersonalService } from "../../../../services/personal-service.service";
 import { Auth } from "../../../models/Auth";
 
 @Component({
@@ -31,7 +31,7 @@ export class LoginComponent {
   initializeForm(): void {
     this.formulario = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)] ],
-      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]]
+      password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
     });
   }
 
@@ -44,6 +44,8 @@ export class LoginComponent {
           console.log(resp.token);
           localStorage.setItem("Authorization",resp.token),
           localStorage.setItem("rol",resp.rol),
+          localStorage.setItem("username",resp.username);
+
           this.router.navigateByUrl('inicio');
         },
         error : error =>{
@@ -55,7 +57,4 @@ export class LoginComponent {
       })
 
   }
-
-
-
 }

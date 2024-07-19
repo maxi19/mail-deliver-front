@@ -1,12 +1,11 @@
 import { Router } from '@angular/router';
-import { Personal } from '../../../models/personal';
 import { Component, OnInit } from '@angular/core';
+import {PageEvent} from '@angular/material/paginator';
+
+import { Personal } from '../../../models/personal';
 import { PersonalService } from 'src/services/personal-service.service';
-import {PageEvent, MatPaginatorModule} from '@angular/material/paginator';
-import { Content, FetchAllPersonResponse } from '../../../models/FetchAllPersonResponse';
-import { pipe } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { HttpEventType, HttpResponse } from '@angular/common/http';
+import {FetchAllPersonResponse } from '../../../models/FetchAllPersonResponse';
+
 
 
 @Component({

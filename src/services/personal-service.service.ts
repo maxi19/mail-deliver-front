@@ -7,6 +7,8 @@ import { Auth } from "../app/models/Auth";
 import { map , delay } from 'rxjs/operators';
 import { environments } from "../environments/environments";
 import { FetchAllPersonResponse } from 'src/app/models/FetchAllPersonResponse';
+import { FileItem } from 'src/app/models/FileItem';
+import { Permiso } from 'src/app/models/Permiso';
 
 @Injectable({
   providedIn: 'root'
@@ -96,9 +98,26 @@ export class PersonalService{
     return this.http.get(`${this.baseURL}files`);
   }
 
+  getFilesDto() :Observable<FileItem[]> {
+    return this.http.get <FileItem[]> (`${this.baseURL}files`);
+  }
+
   deleteFile(filename: string){
     return this.http.get(`${this.baseURL}delete/${filename}`);
   }
+
+  getAllUsersabbreviated(){
+    return this.http.get<UserDto[]> (`${this.baseURL}usuarios/listarPorNombres`);
+  }
+
+  logOut(){
+    return this.http.get(`${this.baseURL}usuarios/logout`);
+  }
+
+  obtenerRoles()  {
+    return this.http.get<UserDto> (`${this.baseURL}usuarios/permisos`);
+  }
+
 
 
 }

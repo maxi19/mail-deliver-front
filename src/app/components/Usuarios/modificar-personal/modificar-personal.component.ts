@@ -1,6 +1,7 @@
 import { PersonalService } from 'src/services/personal-service.service';
-import { Component, OnInit } from '@angular/core';
 import { Personal } from 'src/app/models/personal';
+
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
