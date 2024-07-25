@@ -7,35 +7,12 @@
   </a>
   <ul  class="nav nav-pills text-white" >
     <li class="nav-item" ><a href="#" class="nav-link text-white" *ngIf="existeUsuarioLogeado()">
-      <img src="../../../../assets/icons/user.svg" width="35" height="35" class="d-inline-block align-top" alt="">
-      {{username}}
-    </a></li>
+      <img src="../../../../assets/icons/user.svg" width="40" height="40" class="d-inline-block align-top" alt="ver perfil"></a>
+    </li>
   
-    <li class="nav-item"><a href="#" class="nav-link text-white">Recibos</a></li>
-    <li class="nav-item"><a routerLink="/personal/listar" class="nav-link text-white">Personal</a></li>
     <div class="text-end" *ngIf="existeUsuarioLogeado()">
       <button href="#" class=" btn btn-danger" (click)="logOut()">Cerrar Session</button>
     </div>
   </ul>
 </header>
 
-
-<!--
-  <nav>
-  <div class="logo"></div>
-  <ul>
-    <li><a routerLink="/inicio">Inicio</a>
-    <li><a href="#oferta-educativa">Envio Archivos</a>
-      <ul class="dropdown">
-          <li><a routerLink="/leerRecibos">Varios</a></li>
-          <li><a routerLink="/enviar/recibos/sinMatch">Individual</a></li>
-          <li><a routerLink="/recibo/enviado/listar">Enviados</a></li>
-      </ul>
-    </li>
-
-    <li><a routerLink="/personal/listar">Personal</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-    <li> <button class="btn btn-danger" (click)="logOut()">Logout</button> </li>
-  </ul>
-</nav>
--->

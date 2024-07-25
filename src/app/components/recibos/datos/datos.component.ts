@@ -175,14 +175,12 @@ export class DatosComponent implements OnInit {
   }
 
   agregarDocumentosModal(personalSeleccionado : Personal) {
-    //this.personalSeleccionado =  personalSeleccionado;
-    //this.mostrarRecibos = true;
-    
-
-
+      
     this.modalService.show(MdlRecibosComponent,
-              ContantesModal.optModalMostrarRecibos(this.filesEnBase,"Seleccione recibos para ","Agregar","Cancelar",personalSeleccionado) )
-
+                          ContantesModal.optModalMostrarRecibos(this.filesEnBase,"Seleccione recibos para ","Agregar","Cancelar",personalSeleccionado) )
+                          .onHidden.subscribe(resp =>{
+                            this.obtenerReciboEnBase();
+                          })
   }
 
   agregarCard(){

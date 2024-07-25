@@ -67,8 +67,12 @@
       </form>
     </mat-step >
     <mat-step [optional]="false"  [completed]="false">
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      <ng-template matStepLabel>Done </ng-template>
+
+
+      
+      <app-recibo-en-bandeja></app-recibo-en-bandeja>
+
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>

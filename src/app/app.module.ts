@@ -4,7 +4,7 @@ import { ReactiveFormsModule, FormsModule } from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule,NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { ListaPersonalComponent } from './components/Usuarios/lista-personal/lista-personal.component';
 import { EnvioArchivosComponent } from './components/recibos/envio-archivos/envio-archivos.component';
@@ -35,6 +35,7 @@ import { MdlRecibosComponent } from './modals/mdl-recibos/mdl-recibos.component'
 import{ MaterialModule}from  '../app/modules/material/material.module'
 import { NgxModule } from "./modules/ngx/ngx.module";
 import { RoleDirective } from './components/commons/directive/role.directive';
+import { ReciboEnBandejaComponent } from './components/recibos/recibo-en-bandeja/recibo-en-bandeja.component';
 
 
 @NgModule({
@@ -58,6 +59,7 @@ import { RoleDirective } from './components/commons/directive/role.directive';
     FileGrillaComponent,
     MdlRecibosComponent,
     RoleDirective,
+    ReciboEnBandejaComponent,
 
   ],
   imports: [
@@ -70,6 +72,7 @@ import { RoleDirective } from './components/commons/directive/role.directive';
     IgxSwitchModule,
     ReactiveFormsModule,
     IgxExpansionPanelModule,
+    NoopAnimationsModule,
     MaterialModule,
     NgxModule,
     ModalModule.forRoot()

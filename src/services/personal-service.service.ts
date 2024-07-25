@@ -1,4 +1,4 @@
-import { Injectable, } from '@angular/core';
+import { Injectable, Output, } from '@angular/core';
 import { HttpClient,HttpRequest,HttpResponse,HttpEvent,HttpParams, HttpHeaders } from '@angular/common/http';
 import { Personal } from 'src/app/models/personal';
 import { Observable } from 'rxjs';
@@ -9,6 +9,7 @@ import { environments } from "../environments/environments";
 import { FetchAllPersonResponse } from 'src/app/models/FetchAllPersonResponse';
 import { FileItem } from 'src/app/models/FileItem';
 import { Permiso } from 'src/app/models/Permiso';
+import { OutputBandeja } from "../app/models/OutputBandeja";
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +38,7 @@ export class PersonalService{
     return this.http.get<FetchAllPersonResponse>(`${this.baseURL.concat("usuarios/usuarios")}`, { headers : headers, params : params}  );
     
   }
-
-
   
-
   guardarPersonal(personal:Personal): Observable<Object>{
     return this.http.post(`${this.baseURL.concat("usuarios/registrar")}`, personal);
   }
@@ -118,6 +116,20 @@ export class PersonalService{
     return this.http.get<UserDto> (`${this.baseURL}usuarios/permisos`);
   }
 
+  procesarArchivo( personal : Personal ) : Observable<Personal>  {
+    return this.http.post(`${this.baseURL}recibos/procesarArchivos`, personal).pipe(
+      map((resp : Personal) =>{
+        return resp;
+      }
+    ))
+  }
 
+  consultarBandeja() : Observable<OutputBandeja[]>  {
+    return this.http.get<OutputBandeja[]>(`${this.baseURL}recibos/bandeja`).pipe(
+      map((resp : OutputBandeja[]) =>{
+        return resp;
+      }
+    ))
+  }
 
 }

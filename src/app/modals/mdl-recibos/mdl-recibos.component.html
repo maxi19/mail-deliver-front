@@ -1,4 +1,4 @@
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-lg"  data-backdrop="static" >
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{title}} {{personalSeleccionado.apellidos}} {{personalSeleccionado.nombres}} </h5>
@@ -10,7 +10,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal" (click) ="close()">Cancelar</button>
         <button type="button" class="btn btn-primary" data-mdb-ripple-init *ngIf="personalSeleccionado.fileItems.length>0" (click) ="confirmarItems()" >Agregar recibos</button>
       </div>
     </div>

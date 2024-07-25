@@ -1,0 +1,62 @@
+<table mat-table [dataSource]="dataSource" multiTemplateDataRows class="mat-elevation-z8">
+
+    <ng-container *ngFor="let column of columnsToDisplay" matColumnDef="{{column}}">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container>
+
+  <ng-container matColumnDef="expand">
+    <th mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-icon-button aria-label="expand row"
+             (click)="(expandedElement = expandedElement === element ? null : element); $event.stopPropagation()">
+          <mat-icon *ngIf="expandedElement === element">keyboard_arrow_up</mat-icon>
+          <mat-icon *ngIf="expandedElement !== element">keyboard_arrow_down</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+
+
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></tr>
+  <tr mat-row *matRowDef="let element; columns: columnsToDisplayWithExpand;" class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+  </tr>
+  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+
+  <ng-container matColumnDef="expandedDetail">
+    <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplayWithExpand.length">
+      <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+        
+        <div class="inner-table mat-elevation-z8" *ngIf="expandedElement">
+
+          <table #innerTables mat-table  [dataSource]="element.recibos" matSort>
+            <ng-container matColumnDef="{{innerColumn}}" *ngFor="let innerColumn of innerDisplayedColumns">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> {{innerColumn}} </th>
+              <td mat-cell *matCellDef="let element"> {{element[innerColumn]}} </td>
+            </ng-container>
+            <tr mat-header-row *matHeaderRowDef="innerDisplayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: innerDisplayedColumns;"></tr>
+          </table>
+				</div>
+        
+        
+        <!--
+        <div class="example-element-diagram">
+          <div class="example-element-position"> {{element.cantidad}} </div>
+          <div class="example-element-symbol"> {{element.destinatario}} </div>
+          <div class="example-element-name"> {{element.cantidad}} </div>
+        </div>
+        <div class="example-element-description">
+          {{element.email}}
+          <span class="example-element-description-attribution"> -- Wikipedia </span>
+          <div>
+        -->
+    
+          
+      </div>
+    </td>
+  </ng-container>
+  
+</table>

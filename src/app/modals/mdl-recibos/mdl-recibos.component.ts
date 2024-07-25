@@ -3,6 +3,8 @@ import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FileItem } from 'src/app/models/FileItem';
 import { Personal } from 'src/app/models/personal';
 
+import { PersonalService } from "../../../services/personal-service.service";
+
 
 
 @Component({
@@ -11,8 +13,6 @@ import { Personal } from 'src/app/models/personal';
   styleUrls: ['./mdl-recibos.component.css']
 })
 export class MdlRecibosComponent implements OnInit, AfterViewInit{
-
-
   title?: string;
   closeBtnName?: string;
   yesBtnName?: string;
@@ -24,7 +24,7 @@ export class MdlRecibosComponent implements OnInit, AfterViewInit{
   @Output() public enviarRecibo = new EventEmitter<any>();
 
 
-  constructor(public bsModalRef: BsModalRef){
+  constructor(public bsModalRef: BsModalRef,private service : PersonalService ){
     
   }
   ngAfterViewInit(): void {
@@ -35,7 +35,9 @@ export class MdlRecibosComponent implements OnInit, AfterViewInit{
   }
 
   confirmarItems(){
-    this.enviarRecibo.emit(this.personalSeleccionado);
+    this.service.procesarArchivo(this.personalSeleccionado).subscribe(resp =>{
+      console.log("se proceso", resp);
+    })
     this.bsModalRef.hide();
   }
 
@@ -51,4 +53,12 @@ export class MdlRecibosComponent implements OnInit, AfterViewInit{
       }
       }
     }
+
+    close(){
+      this.bsModalRef.hide();
+      this.personalSeleccionado.fileItems = [];
+    }
+
+
+
 }

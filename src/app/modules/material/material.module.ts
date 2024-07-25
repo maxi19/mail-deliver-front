@@ -12,8 +12,7 @@ import {MatStepperModule} from '@angular/material/stepper';
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
-
+import {MatTableModule} from '@angular/material/table';
 @NgModule({
   declarations: [],
   imports: [
@@ -27,7 +26,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatCardModule,
     MatPaginatorModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule
   ],exports:[
     MatAutocompleteModule,
     MatCheckboxModule,
@@ -39,7 +39,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatCardModule,
     MatPaginatorModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTableModule
   ]
 })
 export class MaterialModule { }

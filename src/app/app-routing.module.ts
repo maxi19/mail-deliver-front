@@ -60,16 +60,6 @@ const routes: Routes = [
       role : ["ADMIN", "SECRETARIA"]
     }
   },
-  {
-    path: 'enviar/recibos/sinMatch', 
-    component:ListaRecibosComponent,
-    canActivate:[UserGuardGuard]
-  },
-  {
-    path: 'archivo/gestor-archivos', 
-    component:RecibosUploadComponent,
-    canActivate:[]
-  },
   { 
     path: 'login', 
     component : LoginComponent

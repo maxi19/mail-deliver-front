@@ -16,7 +16,18 @@ export class ContantesModal{
         backdrop : true
       };
 
-      public static optModalAgregarPersonal(datosModal : Map<String, String> ,
+    public static optModalError : ModalOptions ={
+      initialState: {
+        title: 'Error de session',
+        mensaje : 'La session ha expirado',
+        yesBtnName :"Aceptar"
+      },
+      keyboard : true,
+      animated : true,
+      backdrop : "static",
+      }
+
+    public static optModalAgregarPersonal(datosModal : Map<String, String> ,
                                  title : String , btnYes :string, btnNo : String ) : ModalOptions   {
          let s : ModalOptions = {
             initialState: {
@@ -35,9 +46,9 @@ export class ContantesModal{
               backdrop : true
         }
         return s;
-      }
+      };
     
-      public static optModalMostrarRecibos(fileItems :FileItem[] ,
+    public static optModalMostrarRecibos(fileItems :FileItem[] ,
         title : String , btnYes :string, btnNo : String , personalSeleccionado : Personal) : ModalOptions   {
             let params : ModalOptions = {
             initialState: {
@@ -49,12 +60,10 @@ export class ContantesModal{
             },
             keyboard : true,
             animated : true,
-            backdrop : true
+            backdrop : "static",
+            class :".modal-ku { width: 750px; margin: auto; }"
             }
           return params;
-          } 
-
-    //para modal fijos , o modals con parametros agregarlos aca como constantes
-
+      }; 
 }
 
