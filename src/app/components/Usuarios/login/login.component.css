@@ -1,3 +1,5 @@
+
+
 @charset "ISO-8859-1";
 
 *{
@@ -108,4 +110,7 @@ img{
     background-color:  #5286f7;
     transform: translateY(1px);
     color: white;
+}
+.alert{
+    color: #d91e1e;
 }

@@ -8,9 +8,15 @@
   <form [formGroup]="formulario">
     <div class="div-input">
       <input class="controls" type="text" id="usuario" name="usuario" placeholder="Usuario" required
-        formControlName="username">
+        formControlName="username"  >
+        <div *ngIf="getUsername().invalid && (getUsername().dirty || getUsername().touched)" class="alert">
+          Ingrese un usuario valido
+        </div>
       <input class="controls" type="password" id="contrasena" name="password" placeholder="Contraseña" required
         formControlName="password">
+        <div *ngIf="getPassword().invalid && (getPassword().dirty || getPassword().touched)" class="alert">
+          Ingrese una password
+        </div>
     </div>
 
     <div *ngIf="mostrarVentanaWarning">
@@ -20,8 +26,8 @@
     </div>
 
     <!--Submit button -->
-    <div class="div-apoyo row align-items-end" style="user-select: text">
-      <button type="button" class="botones" (click)="login()">Ingresar</button>
+    <div class="div-apoyo row align-items-end" style="user-select: text" >
+      <button type="button" class="botones" (click)="login()" [disabled]="formulario.invalid" >Ingresar</button>
     </div>
   </form>
 </div>

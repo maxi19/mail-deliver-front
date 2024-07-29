@@ -30,7 +30,7 @@ export class LoginComponent {
   
   initializeForm(): void {
     this.formulario = this.formBuilder.group({
-      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)] ],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(30)] ],
       password: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
     });
   }
@@ -57,4 +57,15 @@ export class LoginComponent {
       })
 
   }
+
+
+  getUsername() {
+   return this.formulario.controls['username'];
+  }
+
+  getPassword() {
+    return this.formulario.controls['password'];
+   }
+ 
+
 }
