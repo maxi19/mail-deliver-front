@@ -48,14 +48,14 @@ export class ContantesModal{
         return s;
       };
     
-    public static optModalMostrarRecibos(fileItems :FileItem[] ,
+    public static optModalMostrarRecibos(
         title : String , btnYes :string, btnNo : String , personalSeleccionado : Personal) : ModalOptions   {
             let params : ModalOptions = {
             initialState: {
               title: title,
               closeBtnName: btnYes,
               yesBtnName: btnNo,
-              fileItems : fileItems,
+              
               personalSeleccionado : personalSeleccionado
             },
             keyboard : true,

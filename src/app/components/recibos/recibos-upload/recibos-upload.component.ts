@@ -17,8 +17,7 @@ export class RecibosUploadComponent implements OnInit {
 
   fileInfos: Observable<any>;
  
-
-  @Output() grillaVacia = new EventEmitter<boolean>();
+  @Output() actualizarLista = new EventEmitter<any>();
 
   constructor(private servicio : PersonalService) { }
 
@@ -47,6 +46,7 @@ export class RecibosUploadComponent implements OnInit {
         this.progressInfo[index].value = 0;
         this.message = 'No se puede subir el archivo ' + file.name;
       });
+
   }
 
   uploadFiles() {
@@ -54,6 +54,7 @@ export class RecibosUploadComponent implements OnInit {
     for (let i = 0; i < this.selectedFiles.length; i++) {
       this.upload(i, this.selectedFiles[i]);
     }
+    this.actualizarLista.emit(true);
   }
 
   deleteFile(filename: string) {

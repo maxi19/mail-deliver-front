@@ -36,6 +36,8 @@ import{ MaterialModule}from  '../app/modules/material/material.module'
 import { NgxModule } from "./modules/ngx/ngx.module";
 import { RoleDirective } from './components/commons/directive/role.directive';
 import { ReciboEnBandejaComponent } from './components/recibos/recibo-en-bandeja/recibo-en-bandeja.component';
+import { PersonalLoaderComponent } from './components/recibos/personal-loader/personal-loader.component';
+import { AddReciboPersonalComponent } from './components/recibos/add-recibo-personal/add-recibo-personal.component';
 
 
 @NgModule({
@@ -60,6 +62,8 @@ import { ReciboEnBandejaComponent } from './components/recibos/recibo-en-bandeja
     MdlRecibosComponent,
     RoleDirective,
     ReciboEnBandejaComponent,
+    PersonalLoaderComponent,
+    AddReciboPersonalComponent,
 
   ],
   imports: [

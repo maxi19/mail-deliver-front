@@ -1,0 +1,49 @@
+
+<form [formGroup]="secondFormGroup">
+    <div class="row">
+      
+        <mat-form-field >
+          <mat-label>{{buscadorTitulo}}</mat-label>
+            <input type="text"
+                   placeholder="Personal"
+                   matInput
+                   formControlName="myControl"
+                   [matAutocomplete]="auto" >
+            <mat-autocomplete #auto="matAutocomplete"   [displayWith]="getEmail.bind(this)"  (optionSelected) = onSelectionChanged($event)  >
+                <mat-option [value]="option.email" *ngFor="let option of filteredOptions | async; track option"  >{{option.completo}}</mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    
+    <div class="row">
+
+      <div class="col-lg-12" cdkDropList [cdkDropListData]="personalesSeleccionados" *ngIf="personalesSeleccionados.length > 0 "  >
+        <mat-card appearance="outlined" *ngFor="let prSeleccionado of personalesSeleccionados; let i = index;" cdkDrag >
+          <mat-card-header class="horizontal">
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{prSeleccionado.apellidos}}, {{prSeleccionado.nombres}} </mat-card-title>
+            <mat-card-subtitle>{{prSeleccionado.email}}</mat-card-subtitle>
+          </mat-card-header> 
+          <mat-card-content class="horizontal" >
+            <input type="hidden" value = "'{{i+1}}'">
+            <input type="button" value="Agregar documentos"   (click)="agregarDocumentosModal(prSeleccionado)" class="btn btn-danger m-2">
+            <input type="button" value="Remover" (click)="removerCard(i)"   class="btn btn-danger m-2">
+          </mat-card-content>
+        </mat-card>
+      </div>
+
+      <div class="col" *ngIf="(mostrarRecibos)">
+
+       <app-file-grilla  [filesEnBase]="filesEnBase"></app-file-grilla>
+
+      </div>
+
+      <div class="alert alert-info" *ngIf="personalesSeleccionados.length == 0" role="alert">
+        No hay personal agregados en la grilla
+      </div>
+
+    </div>
+    <div>
+
+    </div>
+  </form>

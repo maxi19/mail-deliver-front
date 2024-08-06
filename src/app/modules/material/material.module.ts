@@ -13,6 +13,8 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatTableModule} from '@angular/material/table';
+import {MatListModule} from '@angular/material/list';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -27,7 +29,8 @@ import {MatTableModule} from '@angular/material/table';
     MatPaginatorModule,
     MatButtonModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule
   ],exports:[
     MatAutocompleteModule,
     MatCheckboxModule,
@@ -40,7 +43,8 @@ import {MatTableModule} from '@angular/material/table';
     MatPaginatorModule,
     MatButtonModule,
     MatProgressBarModule,
-    MatTableModule
+    MatTableModule,
+    MatListModule
   ]
 })
 export class MaterialModule { }

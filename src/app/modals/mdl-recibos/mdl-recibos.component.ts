@@ -2,8 +2,8 @@ import { AfterViewInit, Component, Input, OnInit , ChangeDetectionStrategy, sign
 import { BsModalRef } from 'ngx-bootstrap/modal';
 import { FileItem } from 'src/app/models/FileItem';
 import { Personal } from 'src/app/models/personal';
-
 import { PersonalService } from "../../../services/personal-service.service";
+import { MatSelectionListChange } from '@angular/material/list';
 
 
 
@@ -12,26 +12,26 @@ import { PersonalService } from "../../../services/personal-service.service";
   templateUrl: './mdl-recibos.component.html',
   styleUrls: ['./mdl-recibos.component.css']
 })
-export class MdlRecibosComponent implements OnInit, AfterViewInit{
+export class MdlRecibosComponent implements AfterViewInit{
+
   title?: string;
   closeBtnName?: string;
   yesBtnName?: string;
-  fileItems? :FileItem[];
   mostrarIcono : boolean = false;
   mesage?:string;
   personalSeleccionado : Personal;
+  fileItems : FileItem[]
 
   @Output() public enviarRecibo = new EventEmitter<any>();
 
 
-  constructor(public bsModalRef: BsModalRef,private service : PersonalService ){
-    
+  constructor(
+      public bsModalRef: BsModalRef,
+      private service : PersonalService,  
+       ){
   }
   ngAfterViewInit(): void {
-
-  }
-  ngOnInit(): void {
-
+    this.obtenerReciboEnBase();
   }
 
   confirmarItems(){
@@ -59,6 +59,16 @@ export class MdlRecibosComponent implements OnInit, AfterViewInit{
       this.personalSeleccionado.fileItems = [];
     }
 
-
-
+    obtenerReciboEnBase(){
+      this.service.getFilesDto().subscribe(data =>{
+        this.fileItems = data;
+      })
+    }
+  
+    /*
+    emitirMensaje() {
+      let selected = this.fileItems.options.filter(option => option.selected);
+    }
+      */
+    
 }

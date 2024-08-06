@@ -1,10 +1,19 @@
-  <div class="modal-dialog modal-lg"  data-backdrop="static" >
+  <div class="modal-dialog modal-xl " role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{title}} {{personalSeleccionado.apellidos}} {{personalSeleccionado.nombres}} </h5>
         <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        <!--
+        <mat-selection-list >
+          <mat-list-option *ngFor="let file of fileItems ; let i = index" (selectionChange)="emitirMensaje($event.option)" selected >
+            {{file.name}}
+          </mat-list-option>
+        </mat-selection-list>
+  -->
+      
+
         <div class="example-box" *ngFor="let file of fileItems ; let i = index"  >
           <mat-checkbox class="example-margin" (change)="update($event.checked, i,file)" >  {{file.name}} </mat-checkbox>
         </div>
@@ -14,7 +23,4 @@
         <button type="button" class="btn btn-primary" data-mdb-ripple-init *ngIf="personalSeleccionado.fileItems.length>0" (click) ="confirmarItems()" >Agregar recibos</button>
       </div>
     </div>
-
-      {{personalSeleccionado | json}}
-
   </div>

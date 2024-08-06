@@ -1,7 +1,7 @@
 import { Injectable, Output, } from '@angular/core';
 import { HttpClient,HttpRequest,HttpResponse,HttpEvent,HttpParams, HttpHeaders } from '@angular/common/http';
 import { Personal } from 'src/app/models/personal';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { UserDto } from "../app/models/User";
 import { Auth } from "../app/models/Auth";
 import { map , delay } from 'rxjs/operators';
@@ -10,6 +10,7 @@ import { FetchAllPersonResponse } from 'src/app/models/FetchAllPersonResponse';
 import { FileItem } from 'src/app/models/FileItem';
 import { Permiso } from 'src/app/models/Permiso';
 import { OutputBandeja } from "../app/models/OutputBandeja";
+import { Enviable } from 'src/app/models/Enviable';
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +18,8 @@ import { OutputBandeja } from "../app/models/OutputBandeja";
 export class PersonalService{
 
   private baseURL = environments.url;
+
+  emailUser = new  BehaviorSubject<String>("");
 
   constructor(private http: HttpClient) {
     this.baseURL = environments.url;
@@ -29,10 +32,6 @@ export class PersonalService{
     .set("pageNo",pageNo)
     .set("pageSize",pageSize)
     .set("sortBy",sortBy);
-    //let params: URLSearchParams = new URLSearchParams();
-    //params.append("pageNo",pageNo+"");
-    //params.append("pageSize",pageSize+"");
-    //params.append("sortBy",sortBy);
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     return this.http.get<FetchAllPersonResponse>(`${this.baseURL.concat("usuarios/usuarios")}`, { headers : headers, params : params}  );
@@ -132,4 +131,12 @@ export class PersonalService{
     ))
   }
 
+  addEmail(email: String ){
+    this.emailUser.next(email);
+  }
+
+  enviarEmail(enviable : Enviable) : Observable<Object>{
+    return this.http.post (`${this.baseURL}email/enviar` , enviable);
+  }
+  
 }
