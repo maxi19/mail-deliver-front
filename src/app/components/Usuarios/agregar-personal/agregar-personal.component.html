@@ -9,10 +9,11 @@
             <img src="../../../assets/logo.png" alt="" class="mx-auto d-block">
         </div>
         <div class="text-center">
-            <h4>Nuevo Registro de Profesor</h4>
+            <h4>{{titulo}}</h4>
         </div>
     </div>
     <form class="formulariologin" [formGroup]="altaUsuarioForm" >
+
         <div class="div-input">
             <input type="text" 
                     class="form-control controls" 
@@ -47,18 +48,35 @@
                     name="email" 
                     formControlName="email"
                     [class.is-invalid]="emailNoValido()"/> 
-                    <span *ngIf="emailNoValido()" class="invalid-feedback">
+                    <span *ngIf="emailNoValido()"  class="invalid-feedback">
                         Email is required.
                     </span>
         </div>
+
+
         <div class="div-input">
-            <select class="form-control controls">
-                <option selected>Seleccione un rol</option>
-                <option value="1">Docente</option>
-                <option value="2">Profesor</option>
-                <option value="3">Administrador</option>
-              </select>
+            <input type="text" 
+                    class="form-control controls" 
+                    id="username" 
+                    placeholder="username completo" 
+                    name="username" 
+                    formControlName="username"
+                    [class.is-invalid]="userNameNoValido()"/> 
+                    <span *ngIf="userNameNoValido()" class="invalid-feedback">
+                        username is required.
+                    </span>
         </div>
+
+        <div class="div-input">
+            <select class="form-control controls" id="rol" name="rol" formControlName="rol" [class.is-invalid]="rolNoValido()" >
+                <option *ngFor="let rol of Roles" [value]="rol.key" >{{rol.value}}</option>
+            </select>
+            <span *ngIf="rolNoValido()" class="invalid-feedback">
+                seleccione un rol
+            </span>
+        </div>
+        
+
         <div class="div-input">
             <div class="mt-2 mb-2 ">
                 <img src="../../../assets/patron-ejemplo.png" alt="" height="50px">
@@ -68,7 +86,7 @@
                     id="patron" 
                     placeholder="patron del recibo  (ven imagen)" 
                     name="patron" 
-                    formControlName="patron" >
+                    formControlName="patron">
         </div>
 
         <div class="div-apoyo" style="user-select: text">
@@ -76,7 +94,3 @@
         </div>
     </form>
 </div>
-
-
-<app-mdl-confirmation ></app-mdl-confirmation>
-<app-mdl-error></app-mdl-error>

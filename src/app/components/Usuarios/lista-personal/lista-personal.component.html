@@ -14,10 +14,10 @@
   <table class="contenido-tabla">
     <thead>
       <tr>
+          <th scope="col">Usuario</th>
           <th scope="col">Nombre</th>
           <th scope="col">Apellido</th>
           <th scope="col">Email</th>
-          <th scope="col"></th>
           <th scope="col"></th>
       </tr>
     </thead>
@@ -25,10 +25,13 @@
     <tbody>
       <tr *ngFor="let personal of fetchAllPersonResponse.content; let i = index">
             <td>{{personal.username}}</td>
+            <td>{{personal.nombres}}</td>
             <td>{{personal.apellidos}}</td>
             <td>{{personal.email}}</td>
-            <td><button (click)= "modificarPersonal(personal.id)" class="btn btn-success"  >Modificar</button></td>
-            <td><button  (click) ="eliminarPersonal(personal.id)" type="button" class="btn btn-danger">Eliminar</button></td>
+            <td>
+              <button (click)= "modificarPersonal(personal.id)" class="btn btn-success m-2"  >Modificar</button>
+              <button (click) ="eliminarPersonal(personal.id)" type="button" class="btn btn-danger">Eliminar</button>
+            </td>
       </tr>
     </tbody>
   </table>

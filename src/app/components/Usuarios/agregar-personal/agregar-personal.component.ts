@@ -6,8 +6,9 @@ import { MdlErrorComponent  } from "src/app/modals/mdl-error/mdl-error.component
 
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
+import { validateVerticalPosition } from '@angular/cdk/overlay';
 
 @Component({
   selector: 'app-agregar-personal',
@@ -15,9 +16,30 @@ import { BsModalRef, BsModalService, ModalOptions } from 'ngx-bootstrap/modal';
   styleUrls: ['./agregar-personal.component.css'],
 })
 export class AgregarPersonalComponent implements OnInit {
+[x: string]: any;
   bsModalRef?: BsModalRef;
   altaUsuarioForm: FormGroup;
   personal: Personal ;
+  titulo : String ="Nuevo Registro de Profesor";
+  
+  Roles =[
+  {
+    key:"",
+    value :"Seleccione un rol"
+  }, 
+  {
+    key :"ADMIN",
+    value :"Admin"
+  },{
+    key:"SECRETARIA",
+    value:"Secretaria"
+  },
+  {
+    key:"DOCENTE",
+    value:"Docente"
+  }
+];
+  
   constructor(
     private personalService: PersonalService,
     private router: Router,
@@ -31,15 +53,19 @@ export class AgregarPersonalComponent implements OnInit {
 
   initializeForm(): void {
     this.altaUsuarioForm = this.formBuilder.group({
-      nombres: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]],
-      apellidos:['', [Validators.required, Validators.minLength(10), Validators.maxLength(20)]],
+      nombres: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      apellidos:['', [Validators.required, Validators.minLength(2), Validators.maxLength(20)]],
       email: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(40), Validators.email, Validators.pattern(".+@fatimarem.edu.ar")]],
+      username: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(20)]],
+      rol: new FormControl<any | null>(this.Roles, Validators.required),
       patron:['', []],
       valid : true
     });
   }
 
-
+  setearRol(){
+    this.altaUsuarioForm.value["rol"]="ddas"
+  }
   resetForm(){
     this.altaUsuarioForm.reset();
   }
@@ -59,6 +85,15 @@ export class AgregarPersonalComponent implements OnInit {
                                                          && this.altaUsuarioForm.get("apellidos").invalid 
   }
 
+  userNameNoValido():boolean{
+    return (this.altaUsuarioForm.get("username").dirty || this.altaUsuarioForm.get("username").touched)
+                                                         && this.altaUsuarioForm.get("username").invalid 
+  }
+
+  rolNoValido(): boolean {
+    return (this.altaUsuarioForm.get("rol").dirty || this.altaUsuarioForm.get("rol").touched)
+                                                         && this.altaUsuarioForm.get("rol").invalid 
+  }
 
   abrirPopUp() {
     this.personal = new Personal();
@@ -68,11 +103,13 @@ export class AgregarPersonalComponent implements OnInit {
     datosModal.set("apellidos",this.altaUsuarioForm.controls["apellidos"].value);
     datosModal.set("email",this.altaUsuarioForm.controls["email"].value);
     
-    this.bsModalRef = this.modalService.show(MdlConfirmationComponent, 
-        ContantesModal.optModalAgregarPersonal(datosModal, "Agregar nuevo Personal","Confirmar","Cancelar" ));
+    this.bsModalRef = this.modalService.show(MdlConfirmationComponent,
+
+    ContantesModal.optModalAgregarPersonal(datosModal, "Agregar nuevo Personal","Confirmar","Cancelar" ));
 
     this.bsModalRef.content.onClose.subscribe(result => {
       if (result) {
+        this.personal = new Personal(this.altaUsuarioForm.value);
         this.registrarPersonal()
       }else{
         this.modalService.hide;
@@ -82,51 +119,11 @@ export class AgregarPersonalComponent implements OnInit {
   }
 
   public registrarPersonal() {
-   // this.personalService.guardarPersonal(this.personal).subscribe(dato=> {
-   //     console.log(dato)
-   //     this.irListarPersonal();
-   //     },
-   //     error => this.errorFromBackend(error.mensaje)
-   // );
-
-   this.personal = {
-          personal_id :0,
-          nombres :this.altaUsuarioForm.get("nombres").value,
-          apellidos :this.altaUsuarioForm.get("apellidos").value,
-          email :this.altaUsuarioForm.get("email").value,
-          recibos : null,
-          fileItems : null,
-          patron :""
-   }
-     
     this.personalService.guardarPersonal(this.personal).subscribe({
       next : (resp) =>{
         this.irListarPersonal();
       }
     })
-
-
-
-  }
-
-  errorFromBackend(mensaje : String): void{
-    
-    const initialState: ModalOptions = {
-      initialState: {
-        title: 'Confirmacion Nuevo Personal',
-        message : mensaje
-      },
-    };
-
-    this.bsModalRef = this.modalService.show(MdlErrorComponent, initialState);
-    this.bsModalRef.content.yesBtnName = 'Aceptar';
-    this.bsModalRef.content.onClose.subscribe(result => {
-      if (result) {
-        this.registrarPersonal()
-      }
-  })
-
-
   }
 
   irListarPersonal():void {
@@ -139,7 +136,4 @@ export class AgregarPersonalComponent implements OnInit {
     this.router.navigate(['personal/listar'])
   }
 
-  buildDataToModal(){
-    
-  }
 }

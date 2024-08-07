@@ -14,6 +14,7 @@ export interface FetchAllPersonResponse {
 
 export interface Content {
     apellidos: string;
+    nombres: string;
     username:  string;
     email:     string;
     id:     number;
