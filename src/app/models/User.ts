@@ -5,5 +5,6 @@ export class UserDto {
     lastName: string;
     email :string;
     completo :string;
+    rol :string;
     scopes :string[] = [];
 }

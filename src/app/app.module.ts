@@ -38,6 +38,7 @@ import { RoleDirective } from './components/commons/directive/role.directive';
 import { ReciboEnBandejaComponent } from './components/recibos/recibo-en-bandeja/recibo-en-bandeja.component';
 import { PersonalLoaderComponent } from './components/recibos/personal-loader/personal-loader.component';
 import { AddReciboPersonalComponent } from './components/recibos/add-recibo-personal/add-recibo-personal.component';
+import { ProfileComponent } from './components/Usuarios/profile/profile.component';
 
 
 @NgModule({
@@ -64,6 +65,7 @@ import { AddReciboPersonalComponent } from './components/recibos/add-recibo-pers
     ReciboEnBandejaComponent,
     PersonalLoaderComponent,
     AddReciboPersonalComponent,
+    ProfileComponent,
 
   ],
   imports: [

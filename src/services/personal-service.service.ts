@@ -138,5 +138,11 @@ export class PersonalService{
   enviarEmail(enviable : Enviable) : Observable<Object>{
     return this.http.post (`${this.baseURL}email/enviar` , enviable);
   }
-  
+  consultarProfile(): Observable<UserDto>{
+    return this.http.get<UserDto>(`${this.baseURL.concat("usuarios/user")}`).pipe(
+      map((resp : UserDto) =>{
+        return resp;
+      }
+    ))
+  }
 }

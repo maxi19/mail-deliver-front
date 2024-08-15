@@ -10,6 +10,7 @@ import { LoginComponent } from "./components/Usuarios/login/login.component";
 import { UserGuardGuard } from "../app/components/commons/user-guard.guard";
 import { DatosComponent } from './components/recibos/datos/datos.component';
 import { RecibosUploadComponent } from "./components/recibos/recibos-upload/recibos-upload.component";
+import { ProfileComponent } from './components/Usuarios/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -59,6 +60,10 @@ const routes: Routes = [
     data :{
       role : ["ADMIN", "SECRETARIA"]
     }
+  },
+  {
+    path: "personal/profile", 
+    component:ProfileComponent
   },
   { 
     path: 'login', 
