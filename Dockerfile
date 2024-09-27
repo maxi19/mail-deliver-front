@@ -1,18 +1,11 @@
-# stage 1
-FROM node:20-alpine as node
+FROM node:alpine
 
-RUN mkdir -p /app
+WORKDIR /usr/src/app
 
-WORKDIR /app
+COPY . /usr/src/app
 
-COPY packege.json /app
+RUN npm install -g @angular/cli
 
-RUN npm install
+RUN npm install --legacy-peer-deps --omit-dev
 
-COPY . /app
-
-RUN npm run build --prod
-
-# stage 2
-FROM nginx:alpine
-COPY --from=node /app/dist/mail-deliver-front /usr/share/nginx/html
+CMD ["ng", "serve", "--host", "0.0.0.0"]
